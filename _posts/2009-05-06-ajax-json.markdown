@@ -1,0 +1,8 @@
+---
+layout: post
+title: 使用Json进行数据传输
+wordpress_id: 364
+wordpress_url: http://www.hijava.org/?p=364
+date: 2009-05-06 17:25:38.000000000 +08:00
+---
+掌握 Ajax，第 10 部分: 使用 JSON 进行数据传输：<a href="http://www.ibm.com/developerworks/cn/web/wa-ajaxintro10/" target="_blank">http://www.ibm.com/developerworks/cn/web/wa-ajaxintro10/</a>

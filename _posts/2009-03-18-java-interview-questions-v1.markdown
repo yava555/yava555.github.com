@@ -1,0 +1,275 @@
+---
+layout: post
+title: ! '[转]Java面试题目1.0版本'
+wordpress_id: 252
+wordpress_url: http://www.hijava.org/?p=252
+date: 2009-03-18 09:17:35.000000000 +08:00
+---
+<strong>1、作用域public,private,protected,以及不写时的区别？</strong>
+<strong>答：</strong>区别如下：
+作用域  当前类 同一packag 子孙类 其他package
+public √ √ √ √
+protected √ √ √ ×
+friendly √ √ × ×
+private √ × × ×
+不写时默认为friendly
+
+<strong>2、char型变量中能不能存贮一个中文汉字?为什么?</strong>
+<strong>答：</strong>是能够定义成为一个中文的，因为java中以unicode编码，一个char占16个字节，所以放一个中文字符是没问题的。
+
+<strong>3、Anonymous Inner Class (匿名内部类) 是否可以extends(继承)其它类，是否可以implements(实现)interface(接口)？
+</strong>答：匿名的内部类是没有名字的内部类，不能extends(继承) 其它类，但一个内部类可以作为一个接口，由另一个内部类实现。
+
+<strong>4、Static Nested Class 和Inner Class的不同？
+</strong>答：Nested Class （一般是C++的说法），Inner Class (一般是JAVA的说法)。Java内部类与C++嵌套类最大的不同就在于是否有指向外部的引用上。注： 静态内部类（Inner Class）意味着1创建一个static内部类的对象，不需要一个外部类对象，2不能从一个static内部类的一个对象访问一个外部类对象。
+
+<strong>5、&amp;和&amp;&amp;的区别？
+</strong>答：&amp;是位运算符，表示按位与运算，&amp;&amp;是逻辑运算符，表示逻辑与（and）。
+
+<strong>6、Collection 和Collections的区别？</strong>
+答：Collection是集合类的上级接口，继承与他的接口主要有Set 和List。
+Collections是针对集合类的一个帮助类，他提供一系列静态方法实现对各种集合的搜索、排序、线程安全化等操作。
+
+<!--more-->
+
+<strong>7、什么时候用assert？
+</strong>答：assertion(断 言)在软件开发中是一种常用的调试方式，很多开发语言中都支持这种机制。在实现中，assertion就是在程序中的一条语句，它对一个boolean表 达式进行检查，一个正确程序必须保证这个boolean表达式的值为true；如果该值为false，说明程序已经处于不正确的状态下，系统将给出警告或 退出。一般来说，assertion用于保证程序最基本、关键的正确性。assertion检查通常在开发和测试时开启。为了提高性能，在软件发布 后，assertion检查通常是关闭的。
+
+<strong>8、代码String s = new String("xyz");创建了几个String Object？
+</strong>答：两个，一个字符对象，一个字符对象引用对象。
+
+<strong>9、Math.round(11.5)等於多少? Math.round(-11.5)等於多少？
+</strong>答：Math.round(11.5)==12;Math.round(-11.5)==-11;round方法返回与参数最接近的长整数，参数加1/2后求其floor。
+
+<strong>10、short s1 = 1; s1 = s1 + 1;有什么错? short s1 = 1; s1 += 1;有什么错？
+</strong>答：short s1 = 1; s1 = s1 + 1; （s1+1运算结果是int型，需要强制转换类型）short s1 = 1; s1 += 1;（可以正确编译）。
+
+<strong>11、Java有没有goto？
+</strong>答：goto是java中的保留字，但现在没有在java中使用。
+
+<strong>12、数组有没有length()这个方法? String有没有length()这个方法？
+</strong>答：数组没有length()这个方法，有length的属性。String有有length()这个方法。
+
+<strong>13、Overload和Override的区别？Overloaded的方法是否可以改变返回值的类型？</strong>
+答： 方法的重写Overriding 和重载Overloading是Java多态性的不同表现。重写（Overriding）是父类与子类之间多态性的一种表现，重载 （Overloading）是一个类中多态性的一种表现。如果在子类中定义某方法与其父类有相同的名称和参数，我们说该方法被重写 (Overriding)。子类的对象使用这个方法时，将调用子类中的定义，对它而言，父类中的定义如同被"屏蔽"了。如果在一个类中定义了多个同名的方 法，它们或有不同的参数个数或有不同的参数类型，则称为方法的重载(Overloading)。Overloaded的方法是可以改变返回值的类型。
+
+<strong>14、Set里的元素是不能重复的，那么用什么方法来区分重复与否呢? 是用==还是equals()? 它们有何区别？
+</strong>答：Set里的元素是不能重复的，那么用iterator()方法来区分重复与否。equals()是判读两个Set是否相等。
+equals()和==方法决定引用值是否指向同一对象，equals()在类中被覆盖，为的是当两个分离的对象的内容和类型相配的话，返回真值。
+
+<strong>15、运行时异常与一般异常有何异同？
+</strong>答：异常表示程序运行过程中可能出现的非正常状态，运行时异常表示虚拟机的通常操作中可能遇到的异常，是一种常见运行错误。java编译器要求方法必须声明抛出可能发生的非运行时异常，但是并不要求必须声明抛出未被捕获的运行时异常。
+
+<strong>16、给我一个你最常见到的runtime exception？
+</strong>答： 常见的运行时异常有如下这些： ArrayStoreException, BufferOverflowException, BufferUnderflowException, CannotRedoException, CannotUndoException, ClassCastException, CMMException, ConcurrentModificationException, DOMException, EmptyStackException, IllegalArgumentException, IllegalMonitorStateException, IllegalPathStateException, IllegalStateException, ImagingOpException, IndexOutOfBoundsException, MissingResourceException, NegativeArraySizeException, NoSuchElementException, NullPointerException, ProfileDataException, ProviderException, RasterFormatException, SecurityException, SystemException, UndeclaredThrowableException, UnmodifiableSetException, UnsupportedOperationException。
+
+<strong>17、error和exception有什么区别？
+</strong>答：error 表示恢复不是不可能但很困难的情况下的一种严重问题。比如说内存溢出。不可能指望程序能处理这样的情况。
+exception 表示一种设计或实现问题。也就是说，它表示如果程序运行正常，从不会发生的情况。
+
+<strong>18、List, Set, Map是否继承自Collection接口？
+</strong>答： List，Set是，Map不是。
+
+<strong>19、abstract class和interface有什么区别？</strong>
+答： 声明方法的存在而不去实现它的类被叫做抽象类（abstract class），它用于要创建一个体现某些基本行为的类，并为该类声明方法，但不能在该类中实现该类的情况。不能创建abstract 类的实例。然而可以创建一个变量，其类型是一个抽象类，并让它指向具体子类的一个实例。不能有抽象构造函数或抽象静态方法。Abstract 类的子类为它们父类中的所有抽象方法提供实现，否则它们也是抽象类为。取而代之，在子类中实现该方法。知道其行为的其它类可以在类中实现这些方法。
+接 口（interface）是抽象类的变体。在接口中，所有方法都是抽象的。多继承性可通过实现这样的接口而获得。接口中的所有方法都是抽象的，没有一个有 程序体。接口只可以定义static final成员变量。接口的实现与子类相似，除了该实现类不能从接口定义中继承行为。当类实现特殊接口时，它定义（即将程序体给予）所有这种接口的方法。 然后，它可以在实现了该接口的类的任何对象上调用接口的方法。由于有抽象类，它允许使用接口名作为引用变量的类型。通常的动态联编将生效。引用可以转换到 接口类型或从接口类型转换，instanceof 运算符可以用来决定某对象的类是否实现了接口。
+
+<strong>20、abstract的method是否可同时是static,是否可同时是native，是否可同时是synchronized？</strong>
+答：都不能
+
+<strong>21、接口是否可继承接口? 抽象类是否可实现(implements)接口? 抽象类是否可继承实体类(concrete class)？</strong>
+答：接口可以继承接口。抽象类可以实现(implements)接口，抽象类是否可继承实体类，但前提是实体类必须有明确的构造函数。
+
+<strong>22、JAVA中的多态与继承？</strong>
+答：
+
+<strong>23、构造器Constructor是否可被override？</strong>
+答：构造器Constructor不能被继承，因此不能重写Overriding，但可以被重载Overloading。
+
+<strong>24、是否可以继承String类？</strong>
+答：String类是final类故不可以继承。
+
+<strong>25、try {}里有一个return语句，那么紧跟在这个try后的finally {}里的code会不会被执行，什么时候被执行，在return前还是后？
+</strong>答：会执行，在return前执行
+
+<strong>26、用最有效率的方法算出2乘以8等於几？</strong>
+答：2 &lt;&lt; 3
+
+<strong>27、两个对象值相同(x.equals(y) == true)，但却可有不同的hash code，这句话对不对？
+</strong>答：不对，有相同的hash code。
+
+<strong>28、当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？
+</strong>答：是值传递。Java 编程语言只有值传递参数。当一个对象实例作为一个参数被传递到方法中时，参数的值就是对该对象的引用。对象的内容可以在被调用的方法中改变，但对象的引用是永远不会改变的。
+
+<strong>29、swtich是否能作用在byte上，是否能作用在long上，是否能作用在String上？</strong>
+答：switch（expr1）中，expr1是一个整数表达式。因此传递给 switch 和 case 语句的参数应该是 int、 short、 char 或者 byte。long,string 都不能作用于swtich。
+
+<strong>30、ArrayList和Vector的区别？</strong>
+答：1)、同步性:Vector是线程安全的，也就是说是同步的，而ArrayList是线程序不安全的，不是同步的
+2)、数据增长:当需要增长时,Vector默认增长为原来一培，而ArrayList却是原来的一半
+
+<strong>31、HashMap和Hashtable的区别？
+</strong>答：HashMap是Hashtable的轻量级实现（非线程安全的实现），他们都完成了Map接口，主要区别在于HashMap允许空（null）键值（key）,由于非线程安全，效率上可能高于Hashtable。
+HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。
+HashMap把Hashtable的contains方法去掉了，改成containsvalue和containsKey。因为contains方法容易让人引起误解。
+Hashtable继承自Dictionary类，而HashMap是Java1.2引进的Map interface的一个实现。
+最大的不同是，Hastable的方法是Synchronize的，而HashMap不是，在多个线程访问Hashtable时，不需要自己为它的方法实现同步，而HashMap 就必须为之提供外同步。
+Hashtable和HashMap采用的hash/rehash算法都大概一样，所以性能不会有很大的差异。
+
+<strong>32、float型float f=3.4是否正确?</strong>
+答：不正确。精度不准确,应该用强制类型转换，如下所示：float f=(float)3.4。
+
+<strong>33、介绍JAVA中的Collection FrameWork(包括如何写自己的数据结构)?</strong>
+答：Collection FrameWork如下：
+Collection
+├List
+│├LinkedList
+│├ArrayList
+│└Vector
+│　└Stack
+└Set
+Map
+├Hashtable
+├HashMap
+└WeakHashMap
+Collection是最基本的集合接口，一个Collection代表一组Object，即Collection的元素（Elements）。
+Map提供key到value的映射。
+
+<strong>34、抽象类与接口？</strong>
+答：抽象类与接口都用于抽象，但是抽象类(JAVA中)可以有自己的部分实现，而接口则完全是一个标识(同时有多重继承的功能)。
+JAVA类实现序例化的方法是实现java.io.Serializable接口
+Collection框架中实现比较要实现Comparable 接口和Comparator 接口
+
+<strong>35、String是最基本的数据类型吗？
+</strong>答：基本数据类型包括byte、int、char、long、float、double、boolean和short。
+java.lang.String类是final类型的，因此不可以继承这个类、不能修改这个类。为了提高效率节省空间，我们应该用StringBuffer类。
+
+<strong>36、String与StringBuffer的区别？</strong>
+答：String的长度是不可变的，StringBuffer的长度是可变的。如果你对字符串中的内容经常进行操作，特别是内容要修改时，那么使用StringBuffer，如果最后需要String，那么使用StringBuffer的toString()方法。
+
+<strong>37、谈谈final, finally, finalize的区别？</strong>
+答：final —修饰符（关键字）如果一个类被声明为final，意味着它不能再派生出新的子类，不能作为父类被继承。因此一个类不能既被声明为abstract的，又 被声明为final的。将变量或方法声明为final，可以保证它们在使用中不被改变。被声明为final的变量必须在声明时给定初值，而在以后的引用中 只能读取，不可修改。被声明为final的方法也同样只能使用，不能重载
+finally—再异常处理时提供finally 块来执行任何清除操作。如果抛出一个异常，那么相匹配的catch 子句就会执行，然后控制就会进入finally 块（如果有的话）
+finalize 是一个方法名。Java 技术允许使用finalize() 方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。这个方法是由垃圾收集器在确定这个对象没有被引用时对这个对象调用的。它是在Object 类中定义的，因此所有的类都继承了它。子类覆盖finalize() 方法以整理系统资源或者执行其他清理工作。finalize() 方法是在垃圾收集器删除对象之前对这个对象调用的
+
+<strong>38、面向对象的特征有哪些方面 ？
+</strong>答：主要有以下四方面：
+1)抽象：抽象就是忽略一个主题中与当前目标无关的那些方面，以便更充分地注意与当前目标有关的方面。抽象并不打算了解全部问题，而只是选择其中的一部分，暂时不用部分细节。抽象包括两个方面，一是过程抽象，二是数据抽象。
+2) 继承：继承是一种联结类的层次模型，并且允许和鼓励类的重用，它提供了一种明确表述共性的方法。对象的一个新类可以从现有的类中派生，这个过程称为类继 承。新类继承了原始类的特性，新类称为原始类的派生类（子类），而原始类称为新类的基类（父类）。派生类可以从它的基类那里继承方法和实例变量，并且类可 以修改或增加新的方法使之更适合特殊的需要。
+3)封装：封装是把过程和数据包围起来，对数据的访问只能通过已定义的界面。面向对象计算始于这个基本概念，即现实世界可以被描绘成一系列完全自治、封装的对象，这些对象通过一个受保护的接口访问其他对象。
+4)多态性：多态性是指允许不同类的对象对同一消息作出响应。多态性包括参数化多态性和包含多态性。多态性语言具有灵活、抽象、行为共享、代码共享的优势，很好的解决了应用程序函数同名问题。
+
+<strong>39、int 和 Integer 有什么区别？</strong>
+答：Java 提供两种不同的类型：引用类型和原始类型（或内置类型）。Int是java的原始数据类型，Integer是java为int提供的封装类。Java为每 个原始类型提供了封装类。原始类型封装 类：booleanBoolean,charCharacter,byteByte,shortShort,intInteger,longLong,floatFloat,doubleDouble 引用类型和原始类型的行为完全不同，并且它们具有不同的语义。引用类型和原始类型具有不同的特征和用法，它们包括：大小和速度问题，这种类型以哪种类型的 数据结构存储，当引用类型和原始类型用作某个类的实例数据时所指定的缺省值。对象引用实例变量的缺省值为 null，而原始类型实例变量的缺省值与它们的类型有关？
+
+<strong>40、说出ArrayList,Vector, LinkedList的存储性能和特性？</strong>
+答：ArrayList 和Vector都是使用数组方式存储数据，此数组元素数大于实际存储的数据以便增加和插入元素，它们都允许直接按序号索引元素，但是插入元素要涉及数组元 素移动等内存操作，所以索引数据快而插入数据慢，Vector由于使用了synchronized方法（线程安全），通常性能上较ArrayList差， 而LinkedList使用双向链表实现存储，按序号索引数据需要进行前向或后向遍历，但是插入数据时只需要记录本项的前后项即可，所以插入速度较快。
+
+<strong>41、heap和stack有什么区别？</strong>
+答：栈是一种线形集合，其添加和删除元素的操作应在同一段完成。栈按照后进先出的方式进行处理。堆是栈的一个组成元素。
+
+<strong>42、Java的接口和C++的虚类的相同和不同处？</strong>
+答： 由于Java 不支持多继承，而有可能某个类或对象要使用分别在几个类或对象里面的方法或属性，现有的单继承机制就不能满足要求。与继承相比，接口有更高的灵活性，因为 接口中没有任何实现代码。当一个类实现了接口以后，该类要实现接口里面所有的方法和属性，并且接口里面的属性在默认状态下面都是public  static,所有方法默认情况下是public.一个类可以实现多个接口。
+
+<strong>43、Java中异常处理机制，事件机制？</strong>
+答：参考<a href="http://www.zahui.com/html/6/14076.htm">http://www.zahui.com/html/6/14076.htm</a>
+
+<strong>44、Java中的异常处理机制的简单原理和应用？
+</strong>答： 当JAVA 程序违反了JAVA的语义规则时，JAVA虚拟机就会将发生的错误表示为一个异常。违反语义规则包括2种情况。一种是JAVA类库内置的语义检查。例如数 组下标越界,会引发IndexOutOfBoundsException;访问null的对象时会引发NullPointerException。另一种 情况就是JAVA允许程序员扩展这种语义检查，程序员可以创建自己的异常，并自由选择在何时用throw关键字引发异常。所有的异常都是 java.lang.Thowable的子类。
+
+<strong>45、GC是什么? 为什么要有GC？</strong>
+答：GC 是垃圾收集的意思（Gabage Collection），内存处理是编程人员容易出现问题的地方，忘记或者错误的内存回收会导致程序或系统的不稳定甚至崩溃，Java提供的GC功能可以 自动监测对象是否超过作用域从而达到自动回收内存的目的，Java语言没有提供释放已分配内存的显示操作方法。
+
+<strong>46、垃圾回收机制,如何优化程序?</strong>
+答：对于GC来说，当程序员创建对象时，GC就开始监控这个对象的地址、大小以及使用情况。通常，GC采用有向图的方式记录和管理堆(heap)中的所有对象。  通过这种方式确定哪些对象是"可达的"，哪些对象是"不可达的"。
+当GC确定一些对象为"不可达"时，GC就有责任回收这些内存空间。所以，程序员可以手动执行System.gc()，通知GC运行，但是Java语言规范并不保证GC一定会执行。
+详情可参考：<a href="http://www.matrix.org.cn/resource/article/43/43769_JVM_GC_PDM.html">http://www.matrix.org.cn/resource/article/43/43769_JVM_GC_PDM.html</a>
+
+<strong>47、垃圾回收的优点和原理。并考虑2种回收机制多线程有几种实现方法,都是什么?</strong>
+答：Java 语言中一个显著的特点就是引入了垃圾回收机制，使c++程序员最头疼的内存管理的问题迎刃而解，它使得Java程序员在编写程序的时候不再需要考虑内存管 理。由于有个垃圾回收机制，Java中的对象不再有"作用域"的概念，只有对象的引用才有"作用域"。垃圾回收可以有效的防止内存泄露，有效的使用可以使 用的内存。垃圾回收器通常是作为一个单独的低级别的线程运行，不可预知的情况下对内存堆中已经死亡的或者长时间没有使用的对象进行清楚和回收，程序员不能 实时的调用垃圾回收器对某个对象或所有对象进行垃圾回收。回收机制有分代复制垃圾回收和标记垃圾回收，增量垃圾回收。
+
+<strong>48、线程的基本概念、线程的基本状态以及状态之间的关系</strong>
+答：线程指在程序执行过程中，能够执行程序代码的一个执行单位，每个程序至少都有一个线程，也就是程序本身。
+Java中的线程有四种状态分别是：运行、就绪、挂起、结束。
+
+<strong>49、启动一个线程是用run()还是start()?</strong>
+答：启动一个线程是调用start()方法，使线程所代表的虚拟处理机处于可运行状态，这意味着它可以由JVM调度并执行。这并不意味着线程就会立即运行。run()方法可以产生必须退出的标志来停止一个线程。
+
+<strong>50、多线程有几种实现方法,都是什么?同步有几种实现方法,都是什么?</strong>
+答：多线程有两种实现方法，分别是继承Thread类与实现Runnable接口
+同步的实现方面有两种，分别是synchronized,wait与notify
+
+<strong>51、sleep() 和 wait() 有什么区别?</strong>
+答：sleep是线程类（Thread）的方法，导致此线程暂停执行指定时间，给执行机会给其他线程，但是监控状态依然保持，到时后会自动恢复。调用sleep不会释放对象锁。
+wait是Object类的方法，对此对象调用wait方法导致本线程放弃对象锁，进入等待此对象的等待锁定池，只有针对此对象发出notify方法（或notifyAll）后本线程才进入对象锁定池准备获得对象锁进入运行状态。
+
+<strong>52、简述synchronized和java.util.concurrent.locks.Lock的异同 ？</strong>
+答：主要相同点：Lock能完成synchronized所实现的所有功能
+主要不同点：Lock有比synchronized更精确的线程语义和更好的性能。synchronized会自动释放锁，而Lock一定要求程序员手工释放，并且必须在finally从句中释放。
+
+<strong>53、当一个线程进入一个对象的一个synchronized方法后，其它线程是否可进入此对象的其它方法?</strong>
+答：不能，一个对象的一个synchronized方法只能由一个线程访问。
+
+<strong>54、java中有几种方法可以实现一个线程？用什么关键字修饰同步方法? stop()和suspend()方法为何不推荐使用？</strong>
+答：有两种实现方法，分别是继承Thread类与实现Runnable接口
+用synchronized关键字修饰同步方法
+反 对使用stop()，是因为它不安全。它会解除由线程获取的所有锁定，而且如果对象处于一种不连贯状态，那么其他线程能在那种状态下检查和修改它们。结果 很难检查出真正的问题所在。suspend()方法容易发生死锁。调用suspend()的时候，目标线程会停下来，但却仍然持有在这之前获得的锁定。此 时，其他任何线程都不能访问锁定的资源，除非被"挂起"的线程恢复运行。对任何线程来说，如果它们想恢复目标线程，同时又试图使用任何一个锁定的资源，就 会造成死锁。所以不应该使用suspend()，而应在自己的Thread类中置入一个标志，指出线程应该活动还是挂起。若标志指出线程应该挂起，便用 wait()命其进入等待状态。若标志指出线程应当恢复，则用一个notify()重新启动线程。
+
+<strong>55、同步和异步有何异同，在什么情况下分别使用他们？举例说明。</strong>
+答：如果数据将在线程间共享。例如正在写的数据以后可能被另一个线程读到，或者正在读的数据可能已经被另一个线程写过了，那么这些数据就是共享数据，必须进行同步存取。
+当应用程序在对象上调用了一个需要花费很长时间来执行的方法，并且不希望让程序等待方法的返回时，就应该使用异步编程，在很多情况下采用异步途径往往更有效率。
+
+<strong>56、JAVA类实现序列化的方法(二种)？</strong>
+答： JAVA类实现序例化的方法是实现java.io.Serializable接口。
+
+<strong>57、如在Collection框架中，实现比较要实现什么样的接口？
+</strong>答： Collection框架中实现比较要实现Comparable 接口和 Comparator 接口。
+
+<strong>58、应用服务器有那些？
+</strong>答：BEA WebLogic Server，IBM WebSphere Application Server，Oracle9i Application Server，jBoss，Tomcat。
+
+<strong>59、你所知道的集合类都有哪些？主要方法？</strong>
+答：最常用的集合类是 List 和 Map。 List 的具体实现包括 ArrayList 和 Vector，它们是可变大小的列表，比较适合构建、存储和操作任何类型对象的元素列表。 List 适用于按数值索引访问元素的情形。
+Map 提供了一个更通用的元素存储方法。 Map 集合类用于存储元素对（称作"键"和"值"），其中每个键映射到一个值。
+
+<strong>60、描述一下JVM加载class文件的原理机制?</strong>
+答：JVM中类的装载是由ClassLoader和它的子类来实现的,Java ClassLoader 是一个重要的Java运行时系统组件。它负责在运行时查找和装入类文件的类。
+
+<strong>61、简述逻辑操作(&amp;,|,^)与条件操作(&amp;&amp;,||)的区别。</strong>
+答：区别主要答两点：a.条件操作只能操作布尔型的,而逻辑操作不仅可以操作布尔型,而且可以操作数值型
+b.逻辑操作不会产生短路
+
+<strong>62、JAVA语言如何进行异常处理，关键字：throws,throw,try,catch,finally分别代表什么意义？在try块中可以抛出异常吗？</strong>
+答：Java 通过面向对象的方法进行异常处理，把各种不同的异常进行分类，并提供了良好的接口。在Java中，每个异常都是一个对象，它是Throwable类或其它 子类的实例。当一个方法出现异常后便抛出一个异常对象，该对象中包含有异常信息，调用这个对象的方法可以捕获到这个异常并进行处理。Java的异常处理是 通过5个关键词来实现的：try、catch、throw、throws和finally。一般情况下是用try来执行一段程序，如果出现异常，系统会抛 出（throws）一个异常，这时候你可以通过它的类型来捕捉（catch）它，或最后（finally）由缺省处理器来处理。
+用try来指定一块预防所有"异常"的程序。紧跟在try程序后面，应包含一个catch子句来指定你想要捕捉的"异常"的类型。
+throw语句用来明确地抛出一个"异常"。
+throws用来标明一个成员函数可能抛出的各种"异常"。
+Finally为确保一段代码不管发生什么"异常"都被执行一段代码。
+可 以在一个成员函数调用的外面写一个try语句，在这个成员函数内部写另一个try语句保护其他代码。每当遇到一个try语句，"异常"的框架就放到堆栈上 面，直到所有的try语句都完成。如果下一级的try语句没有对某种"异常"进行处理，堆栈就会展开，直到遇到有处理这种"异常"的try语句。
+
+<strong>63、一个".java"源文件中是否可以包括多个类（不是内部类）？有什么限制？</strong>
+答：可以。必须只有一个类名与文件名相同。
+
+<strong>64、java中有几种类型的流？JDK为每种类型的流提供了一些抽象类以供继承，请说出他们分别是哪些类？</strong>
+答：字节流，字符流。字节流继承于InputStream OutputStream，字符流继承于InputStreamReader OutputStreamWriter。在java.io包中还有许多其他的流，主要是为了提高性能和使用方便。
+
+<strong>65、java中会存在内存泄漏吗，请简单描述。</strong>
+答：会。如：int i,i2; return (i-i2); //when i为足够大的正数,i2为足够大的负数。结果会造成溢位，导致错误。
+
+<strong>66、什么是java序列化，如何实现java序列化？</strong>
+答：序列化就是一种用来处理对象流的机制，所谓对象流也就是将对象的内容进行流化。可以对流化后的对象进行读写操作，也可将流化后的对象传输于网络之间。序列化是为了解决在对对象流进行读写操作时所引发的问题。
+序 列化的实现：将需要被序列化的类实现Serializable接口，该接口没有需要实现的方法，implements Serializable只是为了标注该对象是可被序列化的，然后使用一个输出流(如：FileOutputStream)来构造一个 ObjectOutputStream(对象流)对象，接着，使用ObjectOutputStream对象的writeObject(Object obj)方法就可以将参数为obj的对象写出(即保存其状态)，要恢复的话则用输入流。
+
+<strong>67、是否可以从一个static方法内部发出对非static方法的调用？
+</strong>答：不可以,如果其中包含对象的method()；不能保证对象初始化.
+
+<strong>68、写clone()方法时，通常都有一行代码，是什么？</strong>
+答：Clone 有缺省行为，super.clone();他负责产生正确大小的空间，并逐位复制。
+
+<strong>69、在JAVA中，如何跳出当前的多重嵌套循环？
+</strong>答：用break; return 方法。
+
+<strong>70、内部类可以引用他包含类的成员吗？有没有什么限制？
+</strong>答：一个内部类对象可以访问创建它的外部类对象的内容。
+
+转自：<a href="http://www.blogjava.net/cmzy/archive/2009/03/13/259622.html" target="_blank">http://www.blogjava.net/cmzy/archive/2009/03/13/259622.html</a>

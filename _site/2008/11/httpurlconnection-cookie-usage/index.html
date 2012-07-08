@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>HttpURLConnection cookie管理 | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>HttpURLConnection cookie管理</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p>但我们使用HttpURLConnection访问web页面的时候不免要涉及到cookie处理，下面简要的介绍一下如何获取和发送相关的cookie</p>
+
+<pre><code>String cookieVal = null;
+String key=null;
+   for (int i = 1; (key = http.getHeaderFieldKey(i)) != null; i++ ) {
+      if (key.equalsIgnoreCase("set-cookie")) {
+          cookieVal = http.getHeaderField(i);
+          cookieVal = cookieVal.substring(0, cookieVal.indexOf(";"));
+          sessionId=sessionId+cookieVal+";";
+      }
+   }
+</code></pre>
+
+<p>其中sessionId就是获取到的cookie，当我们访问需要授权的页面时，将cookie写入到http请求的头部就可以了。如下所示：</p>
+
+<pre><code>http.setRequestProperty("Cookie", sessionId);
+</code></pre>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2008-11-17">2008-11-17</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2008/11/httpurlconnection-cookie-usage/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2008/11/eclipse-usage-1/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2008/11/eclipse-plugin-xmind/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

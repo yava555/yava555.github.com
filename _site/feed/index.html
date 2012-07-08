@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <rss version="2.0"
+        xmlns:content="http://purl.org/rss/1.0/modules/content/"
+        xmlns:atom="http://www.w3.org/2005/Atom"
+  >
+  <channel>
+    <title>yava</title>
+    <link href="http://www.hijava.org/feed/" rel="self" />
+    <link href="http://yihui.name/" />
+    <lastBuildDate>2012-07-08T13:29:14+08:00</lastBuildDate>
+    <webMaster>xie@yihui.name</webMaster>
+    
+    <item>
+      <title>如何去掉Android App里的内置广告</title>
+      <link href="http://www.hijava.org/2012/01/how-to-remove-ad-in-apk/"/>
+      <pubDate>2012-01-01T10:12:23+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2012/01/how-to-remove-ad-in-apk</guid>
+      <content:encoded><![CDATA[<p>1、使用apktool 工具反编译 myapp.apk文件</p>
+
+<blockquote>apktool d myapp.apk myapp/</blockquote>
+
+
+<p>2、修改layout文件，找到广告对应的View，将layout_height 与 layout_width 设置成0dip</p>
+
+<p>3、使用apktool 重新打包修改过的源文件</p>
+
+<blockquote>apktool b myapp</blockquote>
+
+
+<p>新生成的myapp.apk 在myapp/dist目录下</p>
+
+<p>4、使用jarsigner对新生成的apk进行签名</p>
+
+<blockquote>jarsigner -verbose -keystore key.keystore -signedjar myapp_signed.apk myapp.apk passwd</blockquote>
+
+
+<p>myapp_signed.apk就是去掉广告后的apk文件</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>利用Ant脚本实现Android项目自动批量打包</title>
+      <link href="http://www.hijava.org/2011/06/auto-build-batch-of-apks-use-ant-in-android-project/"/>
+      <pubDate>2011-06-25T14:50:21+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2011/06/auto-build-batch-of-apks-use-ant-in-android-project</guid>
+      <content:encoded><![CDATA[<p>因为Android项目加入了有盟统计，每次升级都需要单独针对每一个market或论坛打一个apk，这样当渠道变得越来越多时，打包就变成了一件相当繁琐的事情。</p>
+
+<p>其实可以用Ant脚本来实现自动批量打包：</p>
+
+<p>一、为Android项目增加自定义Ant支持：
+这里有一篇非常不错的介绍说明：<br/>
+<a href="https://www.readability.com/articles/bpyzsmet" target="_blank">Using Ant to Automate Building Android Applications</a>
+<span style="color: #ff0000;">不过有一点不太准确：android_rules模板文件，应该采用android-sdk-windows\tools\ant\main_rules.xml，文章中的android_rules.xml 或 ant_rules_r#.xml都有问题。</span></p>
+
+<p>二、在build.xml中增加如下代码：</p>
+
+<pre><code>&lt;taskdef resource="net/sf/antcontrib/antcontrib.properties"&gt;
+  &lt;classpath&gt;
+    &lt;pathelement location="lib/ant-contrib-1.0b3.jar"/&gt;
+  &lt;/classpath&gt;
+&lt;/taskdef&gt;
+
+
+ &lt;target name="deploy"&gt;
+   &lt;foreach target="modify_manifest" list="${market_channels}" param="channel" delimiter=","&gt;
+   &lt;/foreach&gt;
+ &lt;/target&gt;
+
+&lt;target name="modify_manifest"&gt;
+    &lt;replaceregexp flags="g" byline="false"&gt;
+    &lt;regexp pattern="android:value=&amp;quot;(.*)&amp;quot; android:name=&amp;quot;UMENG_CHANNEL&amp;quot;" /&gt;
+    &lt;substitution expression="android:value=&amp;quot;${channel}&amp;quot; android:name=&amp;quot;UMENG_CHANNEL&amp;quot;" /&gt;
+    &lt;fileset dir="" includes="AndroidManifest.xml" /&gt;
+    &lt;/replaceregexp&gt;
+    &lt;property name="out.release.file"
+                  location="${out.absolute.dir}/${ant.project.name}_${channel}_${app_version}.apk" /&gt;
+    &lt;antcall target="release" /&gt;  
+&lt;/target&gt;
+</code></pre>
+
+<p>taskdef 声明需要放到较前位置，因为if condition也会用到此声明。</p>
+
+<p>build.properties文件增加：</p>
+
+<pre><code>market_channels=UMENG,XIANGUO,MARKET,HIAPK,GOAPK
+app_version=1.2.1
+</code></pre>
+
+<p>market名称用逗号分隔</p>
+
+<p>执行ant deploy会自动在项目bin目录下生成如下apk文件：
+<a href="/uploads/2011/06/ant-apks.jpg"><img src="/uploads/2011/06/ant-apks-300x152.jpg" alt="" title="ant-apks" width="300" height="152" class="alignnone size-medium wp-image-1107" /></a></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>初学者如何学习Android</title>
+      <link href="http://www.hijava.org/2011/06/beginners-how-to-learn-android/"/>
+      <pubDate>2011-06-18T20:57:55+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2011/06/beginners-how-to-learn-android</guid>
+      <content:encoded><![CDATA[<p>这是我在知乎上的回答：<a href="http://www.zhihu.com/question/19611325">http://www.zhihu.com/question/19611325</a></p>
+
+<p><a href="http://stackoverflow.com/" target="_blank">http://stackoverflow.com/</a>
+初期遇到的问题，stackoverflow总能找到。
+<a href="http://stackoverflow.com/questions/tagged/android?sort=votes" target="_blank">http://stackoverflow.com/questions/tagged/android?sort=votes</a>
+投票最多的几个问题，空闲时看看。</p>
+
+<p>SDK文档：建议除Reference以外，全部看一遍。</p>
+
+<p>订阅几个不错的博客：
+<a href="http://blog.csdn.net/Android_Tutor/" target="_blank">http://blog.csdn.net/Android_Tutor/</a>
+<a href="http://www.helloandroid.com/" target="_blank">http://www.helloandroid.com/</a>
+<a href="http://www.poemcode.net/" target="_blank">http://www.poemcode.net</a>
+<a href="http://android-developers.blogspot.com/" target="_blank">http://android-developers.blogspot.com/</a>
+<a href="http://blog.csdn.net/hellogv" target="_blank">http://blog.csdn.net/hellogv</a>
+<a href="http://flyvenus.net/" target="_blank">http://flyvenus.net/</a></p>
+
+<p>加入邮件列表：
+<a href="http://groups.google.com/group/china-android-dev/" target="_blank">http://groups.google.com/group/china-android-dev/</a>
+<a href="http://groups.google.com/group/android-developers/" target="_blank">http://groups.google.com/group/android-developers/</a></p>
+
+<p>定期去SlideShare找些ppt看，下载到ipad上看很爽。
+<a href="http://www.slideshare.net/search/slideshow?q=android/" target="_blank">http://www.slideshare.net/search/slideshow?q=android/</a></p>
+
+<p>阅读源码：
+<a href="http://android.git.kernel.org/" target="_blank">http://android.git.kernel.org/</a>
+<a href="http://code.google.com/p/apps-for-android/" target="_blank">http://code.google.com/p/apps-for-android/</a>
+<a href="http://code.google.com/p/iosched/" target="_blank">http://code.google.com/p/iosched/</a>
+<a href="https://github.com/kaeppler/droid-fu" target="_blank">https://github.com/kaeppler/droid-fu</a> 网络图片下载及缓存</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>WebView宽度自适应</title>
+      <link href="http://www.hijava.org/2011/06/webview-auto-fit/"/>
+      <pubDate>2011-06-18T20:56:07+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2011/06/webview-auto-fit</guid>
+      <content:encoded><![CDATA[<p>用WebView组件显示普通网页时一般会出现横向滚动条，这样会导致页面查看起来非常不方便。其实通过设置WebSettings的属性可以轻易地解决此问题，不过此设置隐藏的比较深，一般很少人会用到。</p>
+
+<pre><code>webSettings= webView.getSettings();
+webSettings.setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
+</code></pre>
+
+<p>LayoutAlgorithm是一个枚举，用来控制html的布局，总共有三种类型：
+NORMAL：正常显示，没有渲染变化。
+SINGLE_COLUMN：把所有内容放到WebView组件等宽的一列中。
+NARROW_COLUMNS：可能的话，使所有列的宽度不超过屏幕宽度。</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>如何改变Android Progressbar默认颜色</title>
+      <link href="http://www.hijava.org/2011/06/how-to-change-android-indeterminate-progressbar-color/"/>
+      <pubDate>2011-06-18T20:53:34+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2011/06/how-to-change-android-indeterminate-progressbar-color</guid>
+      <content:encoded><![CDATA[<p>默认情况下Indeterminate Progressbar是白色的，如果容器的背景也是白色的，这样就根本看不到Progressbar了。</p>
+
+<p>幸好Android自带了一些反转样式，你可以采用其中一个合适的：</p>
+
+<pre><code>&lt;ProgressBar style="@android:style/Widget.ProgressBar.Inverse"/&gt;
+&lt;ProgressBar style="@android:style/Widget.ProgressBar.Large.Inverse"/&gt;
+&lt;ProgressBar style="@android:style/Widget.ProgressBar.Small.Inverse"/&gt;
+</code></pre>
+
+<p>转自：<a href="http://stackoverflow.com/questions/2638161/how-to-change-android-indeterminate-progressbar-color" target="_blank">http://stackoverflow.com/questions/2638161/how-to-change-android-indeterminate-progressbar-color</a></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Android Instapaper Client</title>
+      <link href="http://www.hijava.org/2011/01/android-instapaper-client/"/>
+      <pubDate>2011-01-31T13:37:20+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2011/01/android-instapaper-client</guid>
+      <content:encoded><![CDATA[<p>自从转战Android以后，就计划做一个<a href="http://www.instapaper.com/" target="_blank">Instapaper</a>客户端作为练手项目，还不知道Instapaper是啥玩意？参见对<a href="http://www.36kr.com/5909" target="_blank">Instapaper创始人的一篇访谈</a>。</p>
+
+<p>年假期间终于有空完成了1.0版本，目前可以自动同步Instapaper上全部文章，并且支持离线阅读。</p>
+
+<p>附几张截图：</p>
+
+<p><a href="/uploads/2011/01/文章信息.png"><img class="alignnone size-full wp-image-1076" title="文章信息" src="/uploads/2011/01/detail.png" alt="" width="320" height="480" /></a></p>
+
+<p><a href="/uploads/2011/01/文章列表.png"><img class="alignnone size-full wp-image-1075" title="文章列表" src="/uploads/2011/01/list.png" alt="" width="320" height="480" /></a></p>
+
+<p>可以在market上搜索“Instapaper Client”进行下载，也可以用手机扫描下面二维码获取下载地址：</p>
+
+<p><a href="/uploads/2011/01/instapaper-qr-code.png"><img class="alignnone size-full wp-image-1073" title="instapaper-qr-code" src="/uploads/2011/01/instapaper-qr-code.png" alt="" width="175" height="175" /></a></p>
+
+<p><a href="market://details?id=org.hijava.instapaper">market://details?id=org.hijava.instapaper</a></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Android自动弹出软键盘</title>
+      <link href="http://www.hijava.org/2010/12/android-auto-pop-up-soft-keyboard/"/>
+      <pubDate>2010-12-25T18:30:03+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2010/12/android-auto-pop-up-soft-keyboard</guid>
+      <content:encoded><![CDATA[<p>在AndroidManifest.xml文件，对应Activity处增加：<em>android:windowSoftInputMode="stateVisible|adjustResize"</em></p>
+
+<p><a href="/uploads/2010/12/softinput.jpg"><img class="alignnone size-full wp-image-1057" title="softinput" src="/uploads/2010/12/softinput.jpg" alt="" width="328" height="486" /></a></p>
+
+<p>stateVisible：打开Activity时自动弹出软键盘
+adjustResize：Acitivity根据屏幕中的软键盘而调整大小，可以让软键盘始终显示在屏幕下方，并且不会将操作按钮覆盖住。</p>
+
+<p>参照：<a href="http://developer.android.com/guide/topics/manifest/activity-element.html#wsoft" target="_blank">http://developer.android.com/guide/topics/manifest/activity-element.html#wsoft</a></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>修改TabHost默认样式</title>
+      <link href="http://www.hijava.org/2010/12/modify-tabhost-default-style/"/>
+      <pubDate>2010-12-25T17:46:47+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2010/12/modify-tabhost-default-style</guid>
+      <content:encoded><![CDATA[<p>TabHost是Android提供的一个容器组件，利用它可以轻松地实现TAB界面，如下图所示：</p>
+
+<p><a href="/uploads/2010/12/tabhost.jpg"><img class="alignnone size-full wp-image-1044" title="tabhost" src="/uploads/2010/12/tabhost.jpg" alt="" width="322" height="91" /></a></p>
+
+<p>但很多时候，默认的TAB样式并不符合软件的整体风格，这时候该怎么办呢？其实，我们可以编写XML对其样式进行修改。下面修改后的效果图：</p>
+
+<p><a href="/uploads/2010/12/tabhost_1.jpg"><img class="alignnone size-full wp-image-1045" title="tabhost_1" src="/uploads/2010/12/tabhost_1.jpg" alt="" width="318" height="36" /></a></p>
+
+<h3>1. TabHost布局文件 main.xml</h3>
+
+
+<pre><code>&lt;TabHost
+    android:id="@+id/tabhost"  
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"&gt;  
+    &lt;LinearLayout  
+    android:orientation="vertical"
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"&gt;  
+    &lt;TabWidget  
+        android:id="@android:id/tabs"
+        android:layout_width="fill_parent" 
+        android:layout_height="30dip"
+        android:background="#a0a0a0"
+        android:layout_weight="0" /&gt;  
+    &lt;FrameLayout  
+        android:id="@android:id/tabcontent"  
+        android:layout_width="fill_parent"  
+        android:layout_height="fill_parent"
+        android:layout_weight="1"&gt;
+              &lt;ListView 
+                android:id="@+id/user_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" 
+                android:divider="@drawable/divider_line"
+                android:cacheColorHint="#00000000" /&gt;
+              &lt;ListView 
+                android:id="@+id/article_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" 
+                android:divider="@drawable/divider_line"
+                android:cacheColorHint="#00000000" /&gt;  
+              &lt;ListView 
+                android:id="@+id/feed_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" 
+                android:divider="@drawable/divider_line"
+                android:cacheColorHint="#00000000" /&gt;  
+              &lt;ListView 
+                android:id="@+id/book_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" 
+                android:divider="@drawable/divider_line"
+                android:cacheColorHint="#00000000" /&gt;                                                             
+    &lt;/FrameLayout&gt;  
+    &lt;/LinearLayout&gt;  
+&lt;/TabHost&gt;
+</code></pre>
+
+<p>FrameLayout里有四个ListView 分别对应用户、文章、频道、图书。
+TabWidget和FrameLayout的ID不能自己定义修改。</p>
+
+<h3>2. Activity后台代码</h3>
+
+
+<pre><code>RelativeLayout articleTab = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.minitab, null);
+TextView articleTabLabel = (TextView) articleTab.findViewById(R.id.tab_label);
+articleTabLabel.setText("文章");
+
+RelativeLayout feedTab = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.minitab, null);
+TextView feedTabLabel = (TextView) feedTab.findViewById(R.id.tab_label);
+feedTabLabel.setText("频道");
+
+RelativeLayout bookTab = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.minitab, null);
+TextView bookTabLabel = (TextView) bookTab.findViewById(R.id.tab_label);
+bookTabLabel.setText("图书");
+
+TabHost tabHost = (TabHost) findViewById(R.id.tabhost);
+tabHost.setup();
+
+tabHost.addTab(tabHost.newTabSpec("user").setIndicator(userTab).setContent(R.id.user_list));
+tabHost.addTab(tabHost.newTabSpec("article").setIndicator(articleTab).setContent(R.id.article_list));
+tabHost.addTab(tabHost.newTabSpec("feed").setIndicator(feedTab).setContent(R.id.feed_list));
+tabHost.addTab(tabHost.newTabSpec("book").setIndicator(bookTab).setContent(R.id.book_list));
+</code></pre>
+
+<p>TabHost创建出来以后，必须先setup一下，tabHost.setup();
+setIndicator方法设置的View其实就对应了TAB中的一个个选项卡，它们都是通过一个叫minitab的布局文件inflate出来的。</p>
+
+<h3>3. 选项卡布局文件minitab.xml</h3>
+
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="5dip"
+    android:paddingRight="5dip"&gt;  
+
+    &lt;TextView android:id="@+id/tab_label"  
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:textColor="#000000"
+    android:textStyle="bold"
+    android:background="@drawable/minitab" /&gt; 
+&lt;/RelativeLayout&gt;
+</code></pre>
+
+<p>drawable/minitab是一个selector，指定了Tab选项卡的背景颜色。</p>
+
+<h3>4. selector文件 minitab.xml</h3>
+
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    &gt;
+    &lt;item
+        android:state_selected="false"
+        android:drawable="@drawable/minitab_unselected"
+        &gt;
+    &lt;/item&gt;
+    &lt;item
+        android:state_selected="true"
+        android:drawable="@drawable/minitab_default"
+        &gt;
+    &lt;/item&gt;
+&lt;/selector&gt;
+</code></pre>
+
+<p>minitab_unselected是一浅蓝色背景图片
+minitab_default是一白色背景图片</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Android分享功能</title>
+      <link href="http://www.hijava.org/2010/12/android-call-system-share-function/"/>
+      <pubDate>2010-12-18T18:57:15+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2010/12/android-call-system-share-function</guid>
+      <content:encoded><![CDATA[<p>代码如下：</p>
+
+<pre><code>Intent intent=new Intent(Intent.ACTION_SEND);
+intent.setType("text/plain");
+intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
+intent.putExtra(Intent.EXTRA_TEXT,"I would like to share this with you...");
+startActivity(Intent.createChooser(intent, getTitle()));
+</code></pre>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Android View Hierarchy</title>
+      <link href="http://www.hijava.org/2010/12/android-view-hierarchy/"/>
+      <pubDate>2010-12-06T18:49:29+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2010/12/android-view-hierarchy</guid>
+      <content:encoded><![CDATA[<p><a href="http://developer.android.com/guide/developing/tools/hierarchy-viewer.html" target="_blank">Hierarchy Viewer</a> 是Android SDK里的一个工具，可以帮助你分析应用程序的UI布局。</p>
+
+<p><a href="/uploads/2010/12/hierarchyviewer.jpg"><img class="alignnone size-full wp-image-1031" title="hierarchyviewer" src="/uploads/2010/12/hierarchyviewer.jpg" alt="" width="600" height="443" /></a></p>
+
+<p>使用方式：</p>
+
+<ol>
+    <li>连接移动设备或打开模拟器。</li>
+    <li>运行 hierarchyviewer，具体路径：android-sdk-windows\tools\hierarchyviewer.bat。</li>
+    <li>选择设备，点击[load View Hierarchy]按钮，就可以捕获到当前activity的布局信息。</li>
+    <li>双击树节点可以展示单独的UI部分。</li>
+</ol>
+
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

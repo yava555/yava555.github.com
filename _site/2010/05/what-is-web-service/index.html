@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>什么是Web Service | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>什么是Web Service</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<h3>一、Web Service定义</h3>
+
+
+<blockquote>A Web service is a software system identified by a URI , whose  public interfaces and bindings are defined and described using XML. Its definition can be discovered by other software systems. These systems may then interact with the Web service in a manner prescribed by its definition, using XML based messages conveyed by Internet protocols.</blockquote>
+
+
+<p>这是W3C工作组对Web Service下的定义。通常Web Service包括三个基本元素：<a title="WSDL" href="http://www.w3.org/TR/wsdl" target="_blank">WSDL</a>（Web Services Description Language）、<a title="SOAP" href="http://www.w3.org/TR/soap/" target="_blank">SOAP</a>（Simple Object Access Protocol）和<a title="UDDI" href="http://www.uddi.org/" target="_blank">UDDI</a>（Universal Description, Discovery, and Integration），通过Web Service的定义中也能大致看出来。</p>
+
+<ol>
+    <li>WSDL：一个XML格式文档，用以描述服务端口访问方式和使用协议的细节。通常用来辅助生成服务器和客户端代码及配置信息。</li>
+    <li>SOAP：一个基于XML的可扩展消息信封格式，需同时绑定一个传输用协议。这个协议通常是HTTP或HTTPS，但也可能是SMTP或XMPP。</li>
+    <li>UDDI：一个用来发布和搜索WEB服务的协议，应用程序可借由此协议在设计或运行时找到目标WEB服务。</li>
+</ol>
+
+
+<p>使用Web Service的三种最普遍的方式：<a title="远程过程调用" href="http://zh.wikipedia.org/wiki/%E8%BF%9C%E7%A8%8B%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8" target="_blank">远程过程调用</a>（RPC）、<a title="面向服务架构" href="http://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84" target="_blank">面向服务架构</a>（SOA）以及表述性状态转移（<a title="REST" href="http://zh.wikipedia.org/wiki/REST" target="_blank">REST</a>）。</p>
+
+<p>JavaEye上有两篇关于Web Service的讨论贴：<a href="http://www.javaeye.com/topic/662787" target="_blank">SOAP和WebService的那些事</a> 和 <a href="http://www.javaeye.com/topic/410195" target="_blank">关于 Web Service 的一些理解</a> ，可以加深对Web Service的了解。</p>
+
+<h3>二、Web Service架构</h3>
+
+
+<p style="text-align: center;"><a href="/uploads/2010/05/web_service_architecture.jpg"><img class="size-full wp-image-744  aligncenter" title="web_service_architecture" src="/uploads/2010/05/web_service_architecture.jpg" alt="" width="500" height="363" /></a></p>
+
+
+<p style="text-align: center;">Web Services Architecture</p>
+
+
+<p style="text-align: center;"><a href="/uploads/2010/05/web_service_stack.jpg"><img class="size-full wp-image-745   aligncenter" title="web_service_stack" src="/uploads/2010/05/web_service_stack.jpg" alt="" width="500" height="331" /></a>Web Services Stack</p>
+
+
+
+
+<h3>三、参考：</h3>
+
+
+<p><a href="http://zh.wikipedia.org/zh-cn/Web_service" target="_blank">http://zh.wikipedia.org/zh-cn/Web_service</a></p>
+
+<p><a href="http://www.genomeutwin.org/events/SENGER_060504_webservices.ppt" target="_blank">http://www.genomeutwin.org/events/SENGER_060504_webservices.ppt</a></p>
+
+<p><a href="http://www.michaelweiss.ca/courses/comp/5401/lectures/07-Web-Services.pdf" target="_blank">http://www.michaelweiss.ca/courses/comp/5401/lectures/07-Web-Services.pdf</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2010-05-20">2010-05-20</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2010/05/what-is-web-service/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2010/05/my-favorite-softwares/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2010/05/one-or-second-grade-city/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

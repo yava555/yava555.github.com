@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>Java类初始化顺序 | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>Java类初始化顺序</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p>1、类只有在使用New调用创建的时候才会被JAVA类装载器装入
+2、JAVA类首次装入时，会对静态成员变量或方法进行一次初始化,但方法不被调用是不会执行的，静态成员变量和静态初始化块级别相同，非静态成员变量和非静态初始化块级别相同。
+先初始化父类的静态代码---&gt;初始化子类的静态代码--&gt;
+初始化父类的非静态代码---&gt;初始化父类构造函数---&gt;
+初始化子类非静态代码---&gt;初始化子类构造函数
+3、创建类实例时，首先按照父子继承关系进行初始化
+4、类实例创建时候，首先初始化块部分先执行，然后是构造方法；然后从
+本类继承的子类的初始化块执行，最后是子类的构造方法
+5、类消除时候，首先消除子类部分，再消除父类部分</p>
+
+<pre><code>public class A {
+
+    public A() {
+        System.out.println("A");
+    }
+
+    static {
+        System.out.println("Static A");
+    }
+
+}
+public class B extends A {
+
+    public B() {
+        System.out.println("B");
+    }
+
+    static {
+        System.out.println("Static B");
+    }
+
+}
+public class test {
+
+    public static void main(String[] args) {
+        A a = new B();
+        a = new B();
+    }
+
+}
+</code></pre>
+
+<p>执行结果是：</p>
+
+<pre><code>Static A
+Static B
+A
+B
+A
+B
+</code></pre>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2008-09-11">2008-09-11</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2008/09/java-class-initialize/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2008/09/eclipse-swt-configure/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2008/09/java-finalize-usage/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

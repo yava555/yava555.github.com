@@ -1,0 +1,97 @@
+---
+layout: post
+title: ! '[转]Apache Commons简介'
+wordpress_id: 138
+wordpress_url: http://www.hijava.org/?p=138
+date: 2008-12-12 17:08:35.000000000 +08:00
+---
+<span style="font-family: Arial;">Apache Commons是一个非常有用的工具包，解决各种实际的通用问题，下面是一个简述表，详细信息访问</span><a href="http://jakarta.apache.org/commons/index.html" target="_blank"><span style="font-family: Arial;">http://commons.apache.org/</span></a>
+
+<span style="font-family: Arial;"><strong>BeanUtils</strong>
+Commons-BeanUtils 提供对 Java 反射和自省API的包装</span>
+
+<span style="font-family: Arial;"><strong>Betwixt</strong>
+Betwixt提供将 JavaBean 映射至 XML 文档，以及相反映射的服务.</span>
+
+<span style="font-family: Arial;"><strong>Chain</strong>
+Chain 提供实现组织复杂的处理流程的“责任链模式”.</span>
+
+<span style="font-family: Arial;"><strong>CLI</strong>
+CLI 提供针对命令行参数，选项，选项组，强制选项等的简单API.</span>
+
+<span style="font-family: Arial;"><strong>Codec</strong>
+Codec 包含一些通用的编码解码算法。包括一些语音编码器， Hex, Base64, 以及URL encoder.</span>
+
+<span style="font-family: Arial;"><strong>Collections</strong>
+Commons-Collections 提供一个类包来扩展和增加标准的 Java Collection框架</span>
+
+<span style="font-family: Arial;"><strong>Configuration</strong>
+Commons-Configuration 工具对各种各式的配置和参考文件提供读取帮助.</span>
+
+<span style="font-family: Arial;"><strong>Daemon</strong>
+一种 unix-daemon-like java 代码的替代机制</span>
+
+<span style="font-family: Arial;"><strong>DBCP</strong>
+Commons-DBCP 提供数据库连接池服务</span>
+
+<span style="font-family: Arial;"><strong>DbUtils</strong>
+DbUtils 是一个 JDBC helper 类库，完成数据库任务的简单的资源清除代码.</span>
+
+<span style="font-family: Arial;"><strong>Digester</strong>
+Commons-Digester 是一个 XML-Java对象的映射工具，用于解析 XML配置文件.</span>
+
+<span style="font-family: Arial;"><strong>Discovery</strong>
+Commons-Discovery 提供工具来定位资源 (包括类) ，通过使用各种模式来映射服务/引用名称和资源名称。.</span>
+
+<span style="font-family: Arial;"><strong>EL</strong>
+Commons-EL 提供在JSP2.0规范中定义的EL表达式的解释器.</span>
+
+<span style="font-family: Arial;"><strong>FileUpload</strong>
+FileUpload 使得在你可以在应用和Servlet中容易的加入强大和高性能的文件上传能力</span>
+
+<span style="font-family: Arial;"><strong>HttpClient</strong>
+Commons-HttpClient 提供了可以工作于HTTP协议客户端的一个框架.</span>
+
+<span style="font-family: Arial;"><strong>IO</strong>
+IO 是一个 I/O 工具集</span>
+
+<span style="font-family: Arial;"><strong>Jelly</strong>
+Jelly是一个基于 XML 的脚本和处理引擎。 Jelly 借鉴了 JSP 定指标签，Velocity, Cocoon和Xdoclet中的脚本引擎的许多优点。Jelly 可以用在命令行， Ant 或者 Servlet之中。</span>
+
+<span style="font-family: Arial;"><strong>Jexl</strong>
+Jexl是一个表达式语言，通过借鉴来自于Velocity的经验扩展了JSTL定义的表达式语言。.</span>
+
+<span style="font-family: Arial;"><strong>JXPath</strong>
+Commons-JXPath 提供了使用Xpath语法操纵符合Java类命名规范的 JavaBeans的工具。也支持 maps, DOM 和其他对象模型。.</span>
+
+<span style="font-family: Arial;"><strong>Lang</strong>
+Commons-Lang 提供了许多许多通用的工具类集，提供了一些java.lang中类的扩展功能</span>
+
+<span style="font-family: Arial;"><strong>Latka</strong>
+Commons-Latka 是一个HTTP 功能测试包，用于自动化的QA,验收和衰减测试.</span>
+
+<span style="font-family: Arial;"><strong>Launcher</strong>
+Launcher 组件是一个交叉平台的Java 应用载入器。 Commons-launcher 消除了需要批处理或者Shell脚本来载入Java 类。.原始的 Java 类来自于Jakarta Tomcat 4.0 项目</span>
+
+<span style="font-family: Arial;"><strong>Logging</strong>
+Commons-Logging 是一个各种 logging API实现的包裹类.</span>
+
+<span style="font-family: Arial;"><strong>Math</strong>
+Math 是一个轻量的，自包含的数学和统计组件，解决了许多非常通用但没有及时出现在Java标准语言中的实践问题.</span>
+
+<span style="font-family: Arial;"><strong>Modeler</strong>
+Commons-Modeler 提供了建模兼容JMX规范的 Mbean的机制.</span>
+
+<span style="font-family: Arial;"><strong>Net</strong>
+Net 是一个网络工具集，基于 NetComponents 代码，包括 FTP 客户端等等。</span>
+
+<span style="font-family: Arial;"><strong>Pool</strong>
+Commons-Pool 提供了通用对象池接口，一个用于创建模块化对象池的工具包，以及通常的对象池实现.</span>
+
+<span style="font-family: Arial;"><strong>Primitives</strong>
+Commons-Primitives提供了一个更小，更快和更易使用的对Java基本类型的支持。当前主要是针对基本类型的 collection。.</span>
+
+<span style="font-family: Arial;"><strong>Validator</strong>
+The commons-validator提供了一个简单的，可扩展的框架来在一个XML文件中定义校验器 (校验方法)和校验规则。支持校验规则的和错误消息的国际化。</span>
+
+转自：<a href="http://www.blogjava.net/fengtaishao/articles/3815.html" target="_blank">http://www.blogjava.net/fengtaishao/articles/3815.html</a>

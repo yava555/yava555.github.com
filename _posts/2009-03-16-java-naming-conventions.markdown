@@ -1,0 +1,64 @@
+---
+layout: post
+title: Java编程命名规范
+wordpress_id: 247
+wordpress_url: http://www.hijava.org/?p=247
+date: 2009-03-16 17:13:30.000000000 +08:00
+---
+<table class="text" border="1">
+<tbody>
+<tr>
+<td>标识符类型</td>
+<td>命名规则</td>
+<td>例子</td>
+</tr>
+<tr>
+<td>包(Packages)</td>
+<td>一 个唯一包名的前缀总是全部小写的ASCII字母并且是一个顶级域名，通常是com，edu，gov，mil，net，org，或1981年ISO 3166标准所指定的标识国家的英文双字符代码。包名的后续部分根据不同机构各自内部的命名规范而不尽相同。这类命名规范可能以特定目录名的组成来区分部 门(department)，项目(project)，机器(machine)，或注册名(login names)。</td>
+<td>com.sun.eng
+com.apple.quicktime.v2
+edu.cmu.cs.bovik.cheese</td>
+</tr>
+<tr>
+<td>类(Classes)</td>
+<td>命名规则：类名是个一名词，采用大小写混合的方式，每个单词的首字母大写。尽量使你的类名简洁而富于描述。使用完整单词，避免缩写词(除非该缩写词被更广泛使用，像URL，HTML)</td>
+<td>class Raster;
+class ImageSprite;</td>
+</tr>
+<tr>
+<td>接口(Interfaces)</td>
+<td>命名规则：大小写规则与类名相似</td>
+<td>interface RasterDelegate;
+interface Storing;</td>
+</tr>
+<tr>
+<td>方法(Methods)</td>
+<td>方法名是一个动词，采用大小写混合的方式，第一个单词的首字母小写，其后单词的首字母大写。</td>
+<td>run();
+runFast();
+getBackground();</td>
+</tr>
+<tr>
+<td>变量(Variables)</td>
+<td>除了变量名外，所有实例，包括类，类常量，均采用大小写混合的方式，第一个单词的首字母小写，其后单词的首字母大写。变量名不应以下划线或美元符号开头，尽管这在语法上是允许的。
+变量名应简短且富于描述。变量名的选用应该易于记忆，即，能够指出其用途。尽量避免单个字符的变量名，除非是一次性的临时变量。临时变量通常被取名为i，j，k，m和n，它们一般用于整型；c，d，e，它们一般用于字符型。</td>
+<td>char             c;
+int             i;
+float             myWidth;</td>
+</tr>
+<tr>
+<td>实例变量(Instance Variables)</td>
+<td>大小写规则和变量名相似，除了前面需要一个下划线</td>
+<td>int           _employeeId;
+String        _name;
+Customer     _customer;</td>
+</tr>
+<tr>
+<td>常量(Constants)</td>
+<td>类常量和ANSI常量的声明，应该全部大写，单词间用下划线隔开。(尽量避免ANSI常量，容易引起错误)</td>
+<td>static final int MIN_WIDTH = 4;
+static final int MAX_WIDTH = 999;
+static final int GET_THE_CPU = 1;</td>
+</tr>
+</tbody></table>
+更多信息查看：<a href="http://morningspace.51.net/resource/javacodeconv.html" target="_blank">http://morningspace.51.net/resource/javacodeconv.html</a>

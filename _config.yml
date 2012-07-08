@@ -1,0 +1,6 @@
+markdown: rdiscount
+permalink: /:year/:month/:title/
+url: http://www.hijava.org
+author: yava
+pygments: true
+

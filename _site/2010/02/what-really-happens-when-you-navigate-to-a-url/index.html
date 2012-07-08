@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>当你输入一个网址之后，实际上发生了些什么？ | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>当你输入一个网址之后，实际上发生了些什么？</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p>今天读了一篇不错的文章<a href="http://igoro.com/archive/what-really-happens-when-you-navigate-to-a-url/" target="_blank">What really happens when you navigate to a URL</a> ，作者用示例形象地描述了浏览器与服务器的整个交互过程。</p>
+
+<ol>
+    <li>在浏览器里输入网址</li>
+    <li>浏览器查找服务器的IP地址（浏览器缓存 -&gt; 操作系统缓存 -&gt; 路由器缓存 -&gt; DNS服务器 ）</li>
+    <li>浏览器向WEB服务器发出HTTP请求</li>
+    <li>服务器处理请求（ASP,JSP,PHP...解析器解析）</li>
+    <li>服务器返回响应的HTML代码</li>
+    <li>浏览器开始解析渲染HTML</li>
+    <li>于此同时，浏览器对于碰到的嵌入在HTML里的对象发起HTTP请求（Images,CSS,JS）</li>
+</ol>
+
+
+<p>这只是一个大体流程，每一个环节都可以延伸出很多技术来，像<a href="http://baike.baidu.com/view/21895.htm" target="_blank">CDN</a>,<a href="http://www.ietf.org/rfc/rfc2616.txt" target="_blank">Http Protocol</a>,<a href="http://baike.baidu.com/view/22276.htm" target="_blank">DNS</a>… 需要每一个WEB开发人员去深入钻研。</p>
+
+<p>中文翻译：<a href="http://article.yeeyan.org/view/54517/91367" target="_blank">http://article.yeeyan.org/view/54517/91367</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2010-02-21">2010-02-21</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2010/02/what-really-happens-when-you-navigate-to-a-url/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2010/02/modify-hosts-on-android/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2010/02/how-to-judge-object-repeated-for-hashset/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

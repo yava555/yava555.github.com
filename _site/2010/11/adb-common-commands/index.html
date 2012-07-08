@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>ADB常用命令 | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>ADB常用命令</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p><img class="alignnone size-full wp-image-1009" title="android_avatar" src="/uploads/2010/11/android_avatar.png" alt="" width="94" height="94" /></p>
+
+<blockquote>ADB(Android Debug Bridge)是Android SDK中里的一个工具，用它可以控制和调试你的Android设备或模拟器。</blockquote>
+
+
+<p>下面是几个常用的命令：</p>
+
+<ol>
+    <li>查看所有连接的设备：<strong>adb devices</strong></li>
+    <li>拷贝本地文件到设备：<strong>adb push &lt;local&gt; &lt;remote&gt;</strong></li>
+    <li>拷贝设备里文件到本地：<strong>adb pull &lt;remote&gt; &lt;local&gt;</strong></li>
+    <li>进入linux shell：<strong>adb shell</strong></li>
+    <li>查看log日志：<strong>adb logcat</strong></li>
+    <li>安装应用程序到设备：<strong>adb install [-l] [-r] &lt;file&gt;</strong></li>
+    <li>卸载设备里的应用程序：<strong> adb uninstall [-k] &lt;package&gt;</strong></li>
+</ol>
+
+
+<p>PS. 如果同时连接多个设备或模拟器，执行上述命令时，会报“error: more than one device and emulator” ，这时需要加 -s 参数，例如：<strong>adb -s emulator-5554 shell</strong></p>
+
+<p>注："emulator-5554"是设备名称，可执行<strong>adb devices</strong>命令查看。</p>
+
+<p>详情：<a href="http://android-dls.com/wiki/index.php?title=ADB" target="_blank">http://android-dls.com/wiki/index.php?title=ADB</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2010-11-26">2010-11-26</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2010/11/adb-common-commands/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2010/11/the-difference-between-drawable-hdpi-ldpi-mdpi/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2010/11/get-context-object-in-any-place/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>[转]Facebook背后的那些软件  | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>[转]Facebook背后的那些软件 </h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<div id="news_content"><strong> 2010年6月，Google公布全球<a rel="nofollow" href="http://www.google.com/adplanner/static/top1000/" target="_blank">Top 1000</a>网站。Facebook独占鳌头。</strong></div>
+
+
+<div><strong>
+</strong></div>
+
+
+<div id="news_content">
+<div><a id="attachment565" rel="Lightbox_73" href="http://forum.jobbole.com/attachment.php?attachmentid=565&amp;d=1278674157"><img title="揭秘全球最大网站：Facebook背后的那些软件" src="http://forum.jobbole.com/attachment.php?attachmentid=565&amp;d=1278674157" border="0" alt="揭秘全球最大网站：Facebook背后的那些软件" /></a></div>
+<div></div>
+以Facebook现在的经营规模，诸多传统服务器的技术均将崩溃或根本无法支撑。那么面对5亿的活跃用户，Facebook的工程师们又将如何让网站平 稳运转呢？伯乐在线 - 职场博客的这篇文章将展示Facebook的工程师完成这个艰巨任务所用到的一系列软件。
+
+<span style="font-size: medium;"><strong>Facebook级别规模的挑战</strong></span>
+
+在我们深入细节之前，先了解一组Facebook不得不面对数据，你就可以想象这种规模。
+<ul>
+    <li> Facebook每月的PV量：630,000,000,000 （6千3百亿）</li>
+    <li> Facebook上的图片数量超过其他图片网站的总和（包括诸如Flickr这样的图片网站）</li>
+    <li> 每个月有超过30亿的图片上传到Facebook</li>
+    <li> Facebook系统每秒可以处理120万张图片。这还不包括Facebook的CDN处理的图片。</li>
+    <li> 每月处理超过250亿的信息内容（包括用户状态更新，评论等）</li>
+    <li> Facebook的服务器数量超过3万台（此数据为2009年的数据）</li>
+</ul>
+<span style="font-size: medium;"><strong>Facebook所用的软件</strong></span>
+
+从某些方面来说，Facebook还是属于LAMP类型网站，但是，为了配合其他大量的组件和服务，Facebook对已有的方法，已经做了必要的改变、 拓展和修改。
+
+比如：
+<ul>
+    <li> Facebook依然使用PHP，但Facebook已重建新的编译器，以满足在其Web服务器上加载本地代码，从而提升性能；</li>
+    <li> Facebook使用Linux系统，但为了自身目的，也已做了必要的优化。（尤其是在网络吞吐量方面）；</li>
+    <li> Facebook使用MySQL，但也对其做优化。</li>
+</ul>
+还有定制的系统，比如， Haystack -- 高度可扩展的对象存储，用来处理Facebook的庞大的图片；Scribe --  Facebook的日志系统。
+
+下面展现给大家的是，全球最大的社交网站Facebook所使用到的软件。
+
+<span style="font-size: small;"><strong>Memcached</strong></span> <a id="attachment557" rel="Lightbox_73" href="http://forum.jobbole.com/attachment.php?attachmentid=557&amp;d=1278672290"><img title="Memcached" src="http://forum.jobbole.com/attachment.php?attachmentid=557&amp;d=1278672290" border="0" alt="Memcached" /></a>
+
+Memcached是一款相当有名的软件。它是分布式内存缓存系统。Facebook(还有大量的网站)用它作为Web服务器和MySQL服务器之间的缓 存层。经过多年，Facebook已在Memcached和其相关软件（比如，网络栈）上做了大量优化工作。
+
+Facebook运行着成千上万的Memcached服务器，借以及时处理TB级的缓存数据。可以这样说，Facebook拥有全球最大的 Memcached设备。
+
+<span style="font-size: small;"><strong>HipHop for PHP</strong></span> <a id="attachment558" rel="Lightbox_73" href="http://forum.jobbole.com/attachment.php?attachmentid=558&amp;d=1278672539"><img title="HipHop for PHP" src="http://forum.jobbole.com/attachment.php?attachmentid=558&amp;d=1278672539" border="0" alt="HipHop for PHP" /></a>
+
+和运行在本地服务器上代码相比，PHP的运行速度相对较慢。HipHop把PHP代码转换成C++代码，提高编译时的性能。因为Facebook很依赖 PHP来处理信息，有了HipHop，Facebook在Web服务器方面更是如虎添翼。
+
+HipHop诞生过程：在Facebook，一小组工程师（最初是3位）用了18个月研发而成。
+
+<span style="font-size: small;"><strong>Haystack</strong></span> <a id="attachment559" rel="Lightbox_73" href="http://forum.jobbole.com/attachment.php?attachmentid=559&amp;d=1278672619"><img title="Haystack" src="http://forum.jobbole.com/attachment.php?attachmentid=559&amp;d=1278672619" border="0" alt="Haystack" /></a>
+
+Haystack是Facebook高性能的图片存储/检索系统。（严格来说，Haystack是一对象存储，所以它不一定要存储图 片。）Haystack的工作量超大。Facebook上有超过2百亿张图片，每张图片以四种不同分辨率保存，所以，Facebook有超过8百亿张图 片。
+
+Haystack的作用不单是处理大量的图片，它的性能才是亮点。我们在前面已提到，Facebook每秒大概处理120万张图片，这个数据并不包括其 CDN处理的图片数。这可是个惊人的数据！！！
+
+<span style="font-size: small;"><strong>BigPipe</strong></span> <a id="attachment560" rel="Lightbox_73" href="http://forum.jobbole.com/attachment.php?attachmentid=560&amp;d=1278672692"><img title="bigpipe" src="http://forum.jobbole.com/attachment.php?attachmentid=560&amp;d=1278672692" border="0" alt="bigpipe" /></a>
+
+BigPipe是Facebook开发的动态网页处理系统。为了达到最优，Facebook用它来处理每个网页的分块（也称“Pagelets”）。
+
+比如，聊天窗口是独立检索的，新闻源也是独立检索的。这些Pagelets是可以并发检索，性能也随之提高。如此，即使网站的某部分停用或崩溃后，用户依 然可以使用。
+
+<span style="font-size: small;"><strong>Cassandra</strong></span> <a id="attachment561" rel="Lightbox_73" href="http://forum.jobbole.com/attachment.php?attachmentid=561&amp;d=1278672747"><img title="Cassandra" src="http://forum.jobbole.com/attachment.php?attachmentid=561&amp;d=1278672747" border="0" alt="Cassandra" /></a>
+
+Cassandra是一个没有单点故障的分布式存储系统。它是前NoSQL运动的成员之一，现已开源（已加入Apache工程）。Facebook用它来 做邮箱搜索。
+
+除了Facebook之外，Cassandra也适用于很多其他服务，比如Digg。
+
+<span style="font-size: small;"><strong>Scribe</strong></span> <a id="attachment562" rel="Lightbox_73" href="http://forum.jobbole.com/attachment.php?attachmentid=562&amp;d=1278672821"><img title="Scribe" src="http://forum.jobbole.com/attachment.php?attachmentid=562&amp;d=1278672821" border="0" alt="Scribe" /></a>
+
+Scribe是个灵活多变的日志系统，Facebook把它用于多种内部用途。Scribe用途：处理Facebook级别日志，一旦有新的日志分类生 成，Scribe将自动处理。（Facebook有上百个日志分类）。
+
+<span style="font-size: small;"><strong>Hadoop and Hive</strong></span><a id="attachment563" rel="Lightbox_73" href="http://forum.jobbole.com/attachment.php?attachmentid=563&amp;d=1278672841"><img title="Hadoop" src="http://forum.jobbole.com/attachment.php?attachmentid=563&amp;d=1278672841" border="0" alt="Hadoop" /></a>
+
+Hadoop是款开源Map/Reduce框架，它可以轻松处理海量数据。Facebook用它来做数据分析。（前面就说到了，Facebook的数据量 是超海量的。）Hive起源于Facebook，Hive可以使用SQL查询，让非程序员比较容易使用Hadoop。（注1:  Hive是是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，并提供完整的sql查询功能，可以将sql语句转换为 MapReduce任务进行运行。 ）
+
+<span style="font-size: small;"><strong>Thrift</strong></span>
+
+Facebook在其不同的服务中，使用了不同的语言。比如:  PHP用在前端，Erlang用于聊天系统，Java和C++用于其它地方，等等。Thrift是内部开发的跨语言的框架，把不同的语言绑定在一起，使之 可以相互“交流”。这就让Facebook的跨语言开发，变得比较轻松。
+
+Facebook已把Thrift开源，Thrift支持的语言种类将更多。
+
+<span style="font-size: small;"><strong>Varnish</strong></span> <a id="attachment564" rel="Lightbox_73" href="http://forum.jobbole.com/attachment.php?attachmentid=564&amp;d=1278672912"><img title="Varnish" src="http://forum.jobbole.com/attachment.php?attachmentid=564&amp;d=1278672912" border="0" alt="Varnish" /></a>
+
+Varnish是一个HTTP加速器，担当负载均衡角色，同时也用于快速处理缓存内容。
+
+Facebook用Varnish处理图片和用户照片，每天都要处理十亿级的请求。和Facebook其他的应用应用一样，Varnish也是开源的。
+
+<span style="font-size: medium;"><strong>Facebook可以平稳运行，还得利于其他方面</strong></span>
+
+虽然上面已经提到了一些构成Facebook系统的软件，但是处理如此庞大的系统，本身就是一项复杂的任务。所以，下面还将列出使Facebook能平稳 运行的一些东西。
+
+<span style="font-size: small;"><strong>逐步发布&amp;暗启动</strong></span>
+
+Facebook有一个系统，他们称之为“门卫”。该系统可以针对不同种类的用户运行不同的代码。（它简单介绍了代码库中的不同条件。）该系统让 Facebook逐步发布新特性、A/B测试、激活仅针对Facebook员工的特性 等等。
+
+门卫系统也让Facebook做些“暗启动”的事情。比如，在某一特性上线之前，可以激活该特性背后的元件。另外，它还可以做模拟压力测试，发现瓶颈和潜 在的问题。默默启动一般都是在正式启动之前的2周完成。
+
+<strong><span style="font-size: small;">实时系统的简介</span></strong>
+
+Facebook会仔细监控自身系统，有趣的是，它还监控每个PHP函数在实时生产环境下的性能。这一实时PHP环境监控是通过一个叫XHProf的开源 工具完成的。
+
+<span style="font-size: small;"><strong>逐步禁用某些特性，借以提高性能</strong></span>
+
+如果Facebook遇到性能问题，Facebook有大量的途径来逐步禁用不很重要的特性，以提高其核心特性性能。
+
+<span style="font-size: small;"><strong>尚未提到的东西</strong></span>
+
+虽然这里无法过多深入硬件方面，但硬件绝对是Facebook能达到空前规模的重要因素。比如，和其他大型网站一样，Facebook也用CDN来处理静 态内容。Facebook还在美国西部的俄勒冈州建有一超大的数据中心，可以随时增加服务器。
+
+当然了，除了前面已经提到的，还有其他大量的软件没有说到。但是，希望能突出其中非常有特色的。
+
+<strong><span style="font-size: medium;">Facebook和开源之间的“恋情”</span></strong>
+
+Facebook和开源之间联系，此文不能不提，虽不能说Facebook是多么地钟爱开源，但至少可以这样说，Facebook是“爱”着开源的。
+
+Facebook不仅使用（也捐赠）开源软件，比如，Linux、Memcached、MySQL、Hadoop等等，它还内部开发不少软件，并且也将之 开源。
+
+Facebook开发的开源工程，包括HipHop、Cassandra、Thrift和Scribe。另外，Facebook也把Tornado开源 了。Tornado是一个高性能的Web服务器框架，由FriendFeed幕后团队开发而成。（2009年8月，Facebook收购 FriendFeed。）
+
+（Facebook所用到的开源软件，可以在Facebook的开源页面找到。）
+
+<span style="font-size: medium;"><strong>面临更多的大规模挑战</strong></span>
+
+Facebook以一种令人难以置信的速度成长。它的用户群几乎是成倍增加，活跃用户数量现已接近5亿。而且，谁都无法预测今年底，活跃用户量会到多少。
+
+Facebook甚至成立了一个专门的“成长小组”，该小组不断思考如何让人们使用facebook并融入到facebook中。
+
+这一快速成长，意味着Facebook将遇到不同的性能瓶颈。Facebook会面临来这如下方面的挑战：PV、搜索、上传的图片和状态消息，用户之间的 交互和用户和Facebook之间的交互带来的挑战。
+
+这也是Facebook面对的事实。Facebook的工程师们将继续寻求新方法来扩展（这不只是增加服务器的问题了）。比如，随着网站成长，其图片存储 系统已经多次完全重写。
+
+所以，我们将看到Facebook的工程师们奔向下一个“山头”。我们相信他们不会辜负众望。毕竟，他们正跨越山头，那个我们大多数人仅能向往的山头；他 们正扩展网站，那个用户来自全球各地的网站。当你实现那个里程碑时，你将彪炳史册。
+
+</div>
+
+
+<p>转自：<a href="http://blog.jobbole.com/entry.php/73" target="_blank">http://blog.jobbole.com/entry.php/73</a></p>
+
+<p>原文：<a href="http://royal.pingdom.com/2010/06/18/the-software-behind-facebook/" target="_blank">http://royal.pingdom.com/2010/06/18/the-software-behind-facebook/</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2010-07-18">2010-07-18</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2010/07/the-softwares-behind-facebook/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2010/07/android-a-quick-overview/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2010/07/md5-crack/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

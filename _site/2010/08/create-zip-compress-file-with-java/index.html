@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>用Java创建ZIP压缩文件 | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>用Java创建ZIP压缩文件</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<pre><code>/**
+ * 压缩文件夹
+ * @param sourceDIR 文件夹名称（包含路径）
+ * @param targetZipFile 生成zip文件名
+ * @author liuxiangwei
+ */
+public static void zipDIR(String sourceDIR, String targetZipFile) {
+    try {
+        FileOutputStream target = new FileOutputStream(targetZipFile);
+        ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(target));
+        int BUFFER_SIZE = 1024;
+        byte buff[] = new byte[BUFFER_SIZE];
+        File dir = new File(sourceDIR);
+        if (!dir.isDirectory()) {
+            throw new IllegalArgumentException(sourceDIR+" is not a directory!");
+        }
+        File files[] = dir.listFiles();
+
+        for (int i = 0; i &lt; files.length; i++) {
+            FileInputStream fi = new FileInputStream(files[i]);
+            BufferedInputStream origin = new BufferedInputStream(fi);
+            ZipEntry entry = new ZipEntry(files[i].getName());
+            out.putNextEntry(entry);
+            int count;
+            while ((count = origin.read(buff)) != -1) {
+                out.write(buff, 0, count);
+            }
+            origin.close();
+        }
+        out.close();
+
+    } catch (IOException e) {
+        throw new MsgException("");
+    }
+}
+</code></pre>
+
+<p><strong>注意：</strong>建议使用<em>org.apache.tools.zip.*</em>包下相关类，否则可能会出现中文乱码问题。</p>
+
+<p>参考：<a href="http://www.blogjava.net/dreamstone/archive/2007/08/09/134986.html" target="_blank">java 实现zip与unzip</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2010-08-17">2010-08-17</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2010/08/create-zip-compress-file-with-java/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2010/08/build-online-web-proxy-with-glype/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2010/08/remove-svn-folders-quickly/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

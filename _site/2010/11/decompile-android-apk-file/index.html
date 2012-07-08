@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>【转】反编译Android APK文件 | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>【转】反编译Android APK文件</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<h3>一、<strong>所需工具(点击各自连接进入下载页面)：</strong></h3>
+
+
+<ol>
+    <li><a href="http://code.google.com/p/android4me/downloads/list" target="_blank">AXMLPrinter2.jar</a></li>
+    <li><a href="http://code.google.com/p/dex2jar/downloads/list" target="_blank">dex2jar：</a></li>
+    <li><a href="http://java.decompiler.free.fr/?q=jdgui" target="_blank">查看Jar包的GUI工具</a></li>
+</ol>
+
+
+<h3>二、开始行动</h3>
+
+
+<p><strong>1、用AXMLPrinter2.jar查看apk中的布局xml文件:</strong></p>
+
+<p>将apk文件(为了方便起见放到tools目录里)用WinRAR等工具打开，将res/layout/main.xml解压出来(也还是放在tools目录里哦)</p>
+
+<p>打开main.xml文件，内容如下(一堆天文):</p>
+
+<p><a href="/uploads/2010/11/1.jpg"><img class="alignnone size-full wp-image-978" title="1" src="/uploads/2010/11/1.jpg" alt="" width="500" height="236" /></a></p>
+
+<p>这时候AXMLPrinter2.jar派上用场了，打开cmd终端，一直进入到tools目录下，输入如下命令:</p>
+
+<p><strong>java -jar AXMLPrinter2.jar main.xml &gt; main.txt.</strong> (如下图所示)</p>
+
+<p><a href="/uploads/2010/11/2.jpg"><img class="alignnone size-full wp-image-979" title="2" src="/uploads/2010/11/2.jpg" alt="" width="500" height="123" /></a></p>
+
+<p>打开main.txt代码如下：</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;  
+&lt;LinearLayout  
+xmlns:android="http://schemas.android.com/apk/res/android"  
+android:orientation="1"  
+android:layout_width="-1"  
+android:layout_height="-1"  
+&gt;  
+&lt;WebView  
+   android:id="@7F050000"  
+   android:layout_width="-1"  
+   android:layout_height="-2"  
+&gt;  
+&lt;/WebView&gt;  
+&lt;/LinearLayout&gt; 
+</code></pre>
+
+<p>为了比对打开源程序中的main.xml代码如下(大家比对一下吧):</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;  
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+android:orientation="vertical"  
+android:layout_width="fill_parent"  
+android:layout_height="fill_parent"  
+&gt;  
+&lt;WebView  
+android:id="@+id/apk_web"  
+android:layout_height="wrap_content"  
+android:layout_width="fill_parent"  
+/&gt;  
+&lt;/LinearLayout&gt;  
+</code></pre>
+
+<p><strong>2：通过dex2jar工具进行反编译。</strong></p>
+
+<p>把apk中的class.dex拷贝到dex2jar.bat所在目录。运行dex2jar.bat   class.dex，将会在其文件夹下生成classes.dex.dex2jar.jar。</p>
+
+<p><a href="/uploads/2010/11/3.jpg"><img class="alignnone size-full wp-image-980" title="3" src="/uploads/2010/11/3.jpg" alt="" width="500" height="359" /></a></p>
+
+<p><strong>3、运行JD-GUI打开生成的classes.dex.dex2jar.jar</strong></p>
+
+<p>JD-GUI是一个反编译工具，利用它可以得到JAR包的源代码。</p>
+
+<p><a href="/uploads/2010/11/4.jpg"><img class="alignnone size-full wp-image-981" title="4" src="/uploads/2010/11/4.jpg" alt="" width="500" height="417" /></a></p>
+
+<p>转自：<a href="http://www.cnblogs.com/stulife/archive/2010/08/24/1807143.html" target="_blank">http://www.cnblogs.com/stulife/archive/2010/08/24/1807143.html</a></p>
+
+<p>另一篇不错的文章：<a href="http://lytsing.org/wiki/android/decompile.html" target="_blank">http://lytsing.org/wiki/android/decompile.html</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2010-11-24">2010-11-24</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2010/11/decompile-android-apk-file/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2010/11/join-xiaoguo-team/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2010/11/the-difference-between-drawable-hdpi-ldpi-mdpi/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

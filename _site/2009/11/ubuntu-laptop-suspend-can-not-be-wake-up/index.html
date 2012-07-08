@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>Ubuntu下笔记本休眠或挂起无法唤醒的解决办法 | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>Ubuntu下笔记本休眠或挂起无法唤醒的解决办法</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p>当初用ubuntu6.06的时候，基本上是不敢用挂起功能的。因为一般情况下，挂起了之后90%是不能唤醒的，现在换到了7.04之后，这个挂起功能好了不少，基本上和原来调个个了，基本上90%都能唤醒，但是时常还是有那10%不能唤醒。</p>
+
+<p>最近仔细了解了一下laptop_mode，发现只要打开laptop_mode，Laptop挂起之后无法唤醒的问题已经就不存在了。</p>
+
+<p><span style="color: #0000ff;"><strong>关于laptop_mode</strong></span>
+在默认情况下，你通过安装完系统到笔记本上后，就安装上了laptop-mode-tools工具包。如果你不缺认自已是否安装了laptop-mode-tools工具包，可以在终端中输入下列命令来确认是否安装。</p>
+
+<p><code>dpkg -l | grep laptop-mode-tools</code></p>
+
+<p>如果你的电脑执行命今后无结果输出，那么你可以通过下列命令来安装。</p>
+
+<p><code>sudo  apt-get install laptop-mode-tools</code></p>
+
+<p>虽然系统已自动安装了laptop-mode-tools，但是是不是就自动启动了laptop_mode模式了呢？我们用下列命令来判断Laptop是否启用了laptop_mode，如果显示结果为0，则表示未启动，如果为非0的数字则表示启动了。</p>
+
+<p><code>cat /proc/sys/vm/laptop_mode</code></p>
+
+<p>怎样启动laptop_mode模式呢？
+1.修改配置文件/etc/default/acpi-support，更改ENABLE_LAPTOP_MODE=true</p>
+
+<p><code>sudo gedit /etc/default/acpi-support</code></p>
+
+<p>2.然后在默认情况下UBUNTU系统会在你切换电源到电池供电时启动laptop_mode，如果你现在就想启动laptop_mode模式，请直接在终端中输入</p>
+
+<p><code>sudo laptop_mode start|stop|restart</code></p>
+
+<p>启动了laptop_mode之后，在ubuntu挂起后，基本上就不会遇到无法唤醒的情况了。</p>
+
+<p>转自: <a href="http://www.oceanboo.cn/read.php/82.htm" target="_blank">http://www.oceanboo.cn/read.php/82.htm</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2009-11-05">2009-11-05</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2009/11/ubuntu-laptop-suspend-can-not-be-wake-up/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2009/11/easy-explorer/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2009/11/install-jdk-under-ubuntu/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

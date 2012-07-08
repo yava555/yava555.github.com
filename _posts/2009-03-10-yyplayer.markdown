@@ -1,0 +1,19 @@
+---
+layout: post
+title: 小巧的mp3播放器YYplayer（jmf实现）
+wordpress_id: 221
+wordpress_url: http://www.hijava.org/?p=221
+date: 2009-03-10 14:30:27.000000000 +08:00
+---
+以前一直用<a href="http://www.appinn.com/playyo-media-player/" target="_blank">PlayYO</a>作为mp3播放器，但是比较不爽的是PlayYO总是从当前文件夹下的第一首歌开始顺序播放，前面的歌曲都听烦了，后面的歌曲却很少能听到。本来想找到PlayYO源代码，修改一下，让它能够实现随机播放，找了半天也没有找到源码，最后决定自己模仿PlayYO编写一个mp3播放器。经过的2天努力，终于实现了个雏形。
+
+界面是用SWT实现的，音频播放用JMF实现，也正是因为这个原因，导致最后生成的文件有点大（5.25 MB），与PlayYO（11KB）比起来有着天壤之别。
+
+使用方式：
+
+将YYplayer放到存有mp3歌曲的文件夹下，双击运行，YYplayer就会随机播放此文件下的mp3歌曲了。
+
+单击 - 暂停/开始
+右击 - 退出
+
+YYplayer下载：<a href="/uploads/2009/03/yyplayer.rar" target="_blank">yyplayer</a>

@@ -1,0 +1,21 @@
+---
+layout: post
+title: CSS Hacks
+wordpress_id: 551
+wordpress_url: http://www.hijava.org/?p=551
+date: 2010-02-28 22:19:33.000000000 +08:00
+---
+<!-- BODY { FONT-FAMILY:Tahoma; FONT-SIZE:10pt } P { FONT-FAMILY:Tahoma; FONT-SIZE:10pt } DIV { FONT-FAMILY:Tahoma; FONT-SIZE:10pt } TD { FONT-FAMILY:Tahoma; FONT-SIZE:10pt } -->对于前端开发人员而言，一个主要的任务就要是解决网页在不同浏览器下显示不一致的问题。有些时候，为了能够在各种主流浏览器下实现理想的页面布局， 往往就会利用浏览器的漏洞（其实是不同浏览器解析差异），采用一些特殊的样式属性（例如_height或-height就只会对IE6及以下版本浏览器起 作用），这就是平时所说的CSS Hacks. 但是Hacks方式会引发潜在兼容问题，应尽量避免。
+<h3>下面介绍常用的几个CSS Hack方式：</h3>
+1、_property: value and -property: value
+仅作用于IE6及以下
+2、*property: value
+仅作用于IE7及以下
+3、!important
+IE6及以下版本浏览器，对!important标识符存在这样一个问题，在样式声明区域中，相同的属性如果再次被声明，前面的!important作用 的属性就会被忽略。!important往往被用来赋予IE6及以下版本浏览器特殊的属性值。
+<h3>下面是区别不同浏览器的写法：</h3>
+<img class="alignnone size-full wp-image-552" title="css_hack" src="/uploads/2010/02/css_hack.jpg" alt="css_hack" width="435" height="169" />
+<h3><span style="font-family: monospace;">参考：<a href="http://www.webdevout.net/css-hacks" target="_blank"></a></span></h3>
+<div><span style="font-family: monospace;"><a href="http://www.webdevout.net/css-hacks" target="_blank">http://www.webdevout.net/css-hacks</a></span></div>
+<div><a href="http://www.div-css.com/html/XHTML-CSS/hack/1136667.html" target="_blank"><span style="font-family: monospace;">http://www.div-css.com/html/XHTML-CSS/hack/1136667.html</span></a></div>
+<div><a href="http://www.cnblogs.com/wiky/rss" target="_blank"><span style="font-family: monospace;">http://www.cnblogs.com/wiky/rss</span></a></div>

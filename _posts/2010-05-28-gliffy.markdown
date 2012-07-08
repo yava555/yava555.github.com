@@ -1,0 +1,12 @@
+---
+layout: post
+title: Gliffy - 在线绘图工具
+wordpress_id: 761
+wordpress_url: http://www.hijava.org/?p=761
+date: 2010-05-28 19:43:47.000000000 +08:00
+---
+<img class="alignnone" title="Gliffy" src="http://www.gliffy.com/images/logo_index.gif" alt="" width="188" height="70" />
+
+与别人分享和交流技术的时候，免不了绘制一些示意图，来表达自己想法。<a href="http://www.gliffy.com/" target="_blank">Gliffy</a> 就是这样一个工具，可以让你随心所欲的画一些图示，包括流程图，网络图，UML图，组织结构图…
+
+Gliffy: <a href="http://www.gliffy.com/" target="_blank">http://www.gliffy.com/</a>

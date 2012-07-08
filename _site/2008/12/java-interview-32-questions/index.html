@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>[转]JAVA程序员面试32问! | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>[转]JAVA程序员面试32问!</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p>第一，谈谈final, finally, finalize的区别。</p>
+
+<p>第二，Anonymous Inner Class (匿名内部类) 是否可以extends(继承)其它类，是否可以implements(实现)interface(接口)?</p>
+
+<p>第三，Static Nested Class 和 Inner Class的不同，说得越多越好(面试题有的很笼统)。</p>
+
+<p>第四，&amp;和&amp;&amp;的区别。</p>
+
+<p>第五，HashMap和Hashtable的区别。</p>
+
+<p>第六，Collection 和 Collections的区别。</p>
+
+<p>第七，什么时候用assert。</p>
+
+<p>第八，GC是什么? 为什么要有GC?</p>
+
+<p>第九，String s = new String("xyz");创建了几个String Object?</p>
+
+<p>第十，Math.round(11.5)等於多少? Math.round(-11.5)等於多少?</p>
+
+<p>第十一，short s1 = 1; s1 = s1 + 1;有什么错? short s1 = 1; s1 += 1;有什么错?</p>
+
+<p>第十二，sleep() 和 wait() 有什么区别?</p>
+
+<p>第十三，Java有没有goto?</p>
+
+<p>第十四，数组有没有length()这个方法? String有没有length()这个方法?</p>
+
+<p>第十五，Overload和Override的区别。Overloaded的方法是否可以改变返回值的类型?</p>
+
+<p>第十六，Set里的元素是不能重复的，那么用什么方法来区分重复与否呢? 是用==还是equals()? 它们有何区别?</p>
+
+<p>第十七，给我一个你最常见到的runtime exception。</p>
+
+<p>第十八，error和exception有什么区别?</p>
+
+<p>第十九，List, Set, Map是否继承自Collection接口?</p>
+
+<p>第二十，abstract class和interface有什么区别?</p>
+
+<p>第二十一，abstract的method是否可同时是static,是否可同时是native，是否可同时是synchronized?</p>
+
+<p>第二十二，接口是否可继承接口? 抽象类是否可实现(implements)接口? 抽象类是否可继承实体类(concrete class)?</p>
+
+<p>第二十三，启动一个线程是用run()还是start()?</p>
+
+<p>第二十四，构造器Constructor是否可被override?</p>
+
+<p>第二十五，是否可以继承String类?</p>
+
+<p>第二十六，当一个线程进入一个对象的一个synchronized方法后，其它线程是否可进入此对象的其它方法?</p>
+
+<p>第二十七，try {}里有一个return语句，那么紧跟在这个try后的finally {}里的code会不会被执行，什么时候被执行，在return前还是后?</p>
+
+<p>第二十八，编程题: 用最有效率的方法算出2乘以8等於几?</p>
+
+<p>第二十九，两个对象值相同(x.equals(y) == true)，但却可有不同的hash code，这句话对不对?</p>
+
+<p>第三十，当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递?</p>
+
+<p>第三十一，swtich是否能作用在byte上，是否能作用在long上，是否能作用在String上?</p>
+
+<p>第三十二，编程题: 写一个Singleton出来。</p>
+
+<p>转自：<a href="http://topic.csdn.net/u/20081201/22/b80cbb0a-b30e-46db-b30a-d73e8e037966.html">http://topic.csdn.net/u/20081201/22/b80cbb0a-b30e-46db-b30a-d73e8e037966.html</a>（答案从这里寻找）</p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2008-12-03">2008-12-03</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2008/12/java-interview-32-questions/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2008/11/commons-fileupload-1/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2008/12/apache-commons-1/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

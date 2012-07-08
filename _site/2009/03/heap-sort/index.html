@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>[转]堆排序算法原理以及实例代码 | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>[转]堆排序算法原理以及实例代码</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<div class="m_l_cont_note1">
+<ul>
+    <li><span class="fa">摘要：</span>本文给出了堆排序的原理定义以及实际代码。</li>
+</ul>
+</div>
+
+
+<p>1、 堆排序定义
+n个关键字序列Kl，K2，…，Kn称为堆，当且仅当该序列满足如下性质(简称为堆性质)：
+(1) ki≤K2i且ki≤K2i+1 或(2)Ki≥K2i且ki≥K2i+1(1≤i≤ )</p>
+
+<p>若将此序列所存储的向量R[1..n]看做是一棵完全二叉树的存储结构，则堆实质上是满足如下性质的完全二叉树：树中任一非叶结点的关键字均不大于(或不小于)其左右孩子(若存在)结点的关键字。
+【例】关键字序列(10，15，56，25，30，70)和(70，56，30，25，15，10)分别满足堆性质(1)和(2)，故它们均是堆，其对应的完全二叉树分别如小根堆示例和大根堆示例所示。
+2、大根堆和小根堆
+根结点(亦称为堆顶)的关键字是堆里所有结点关键字中最小者的堆称为小根堆。
+根结点(亦称为堆顶)的关键字是堆里所有结点关键字中最大者，称为大根堆。
+注意：
+①堆中任一子树亦是堆。
+②以上讨论的堆实际上是二叉堆(Binary Heap)，类似地可定义k叉堆。
+3、堆排序特点
+堆排序(HeapSort)是一树形选择排序。
+堆排序的特点是：在排序过程中，将R[l..n]看成是一棵完全二叉树的顺序存储结构，利用完全二叉树中双亲结点和孩子结点之间的内在关系【参见二叉树的顺序存储结构】，在当前无序区中选择关键字最大(或最小)的记录。
+4、堆排序与直接插入排序的区别
+直 接选择排序中，为了从R[1..n]中选出关键字最小的记录，必须进行n-1次比较，然后在R[2..n]中选出关键字最小的记录，又需要做n-2次比 较。事实上，后面的n-2次比较中，有许多比较可能在前面的n-1次比较中已经做过，但由于前一趟排序时未保留这些比较结果，所以后一趟排序时又重复执行 了这些比较操作。
+堆排序可通过树形结构保存部分比较结果，可减少比较次数。
+5、堆排序
+堆排序利用了大根堆(或小根堆)堆顶记录的关键字最大(或最小)这一特征，使得在当前无序区中选取最大(或最小)关键字的记录变得简单。</p>
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; font-size: 13px; width: 98%; background-color: #eeeeee;"><!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+--><span style="color: #008080;"> 1</span> <span style="color: #008000;">/*</span><span style="color: #008000;">
+</span><span style="color: #008080;"> 2</span> <span style="color: #008000;">堆排序
+</span><span style="color: #008080;"> 3</span> <span style="color: #008000;">(1)用大根堆排序的基本思想
+</span><span style="color: #008080;"> 4</span> <span style="color: #008000;">① 先将初始文件R[1..n]建成一个大根堆，此堆为初始的无序区
+</span><span style="color: #008080;"> 5</span> <span style="color: #008000;">② 再将关键字最大的记录R[1](即堆顶)和无序区的最后一个记录R[n]交换，
+</span><span style="color: #008080;"> 6</span> <span style="color: #008000;">由此得到新的无序区R[1..n-1]和有序区R[n]，且满足R[1..n-1].keys≤R[n].key
+</span><span style="color: #008080;"> 7</span> <span style="color: #008000;">③ 由于交换后新的根R[1]可能违反堆性质，故应将当前无序区R[1..n-1]调整为堆。
+</span><span style="color: #008080;"> 8</span> <span style="color: #008000;">然后再次将R[1..n-1]中关键字最大的记录R[1]和该区间的最后一个记录R[n-1]交换，
+</span><span style="color: #008080;"> 9</span> <span style="color: #008000;">由此得到新的无序区R[1..n-2]和有序区R[n-1..n]，且仍满足关系R[1..n- 2].keys≤R[n-1..n].keys，
+</span><span style="color: #008080;">10</span> <span style="color: #008000;">同样要将R[1..n-2]调整为堆。
+</span><span style="color: #008080;">11</span> <span style="color: #008000;">……
+</span><span style="color: #008080;">12</span> <span style="color: #008000;">直到无序区只有一个元素为止。
+</span><span style="color: #008080;">13</span> <span style="color: #008000;">(2)大根堆排序算法的基本操作：
+</span><span style="color: #008080;">14</span> <span style="color: #008000;">① 初始化操作：将R[1..n]构造为初始堆；
+</span><span style="color: #008080;">15</span> <span style="color: #008000;">② 每一趟排序的基本操作：将当前无序区的堆顶记录R[1]和该区间的最后一个记录交换，然后将新的无序区调整为堆(亦称重建堆)。
+</span><span style="color: #008080;">16</span> <span style="color: #008000;">注意：
+</span><span style="color: #008080;">17</span> <span style="color: #008000;">①只需做n-1趟排序，选出较大的n-1个关键字即可以使得文件递增有序。
+</span><span style="color: #008080;">18</span> <span style="color: #008000;">②用小根堆排序与利用大根堆类似，只不过其排序结果是递减有序的。
+</span><span style="color: #008080;">19</span> <span style="color: #008000;">堆排序和直接选择排序相反：在任何时刻，堆排序中无序区总是在有序区之前，
+</span><span style="color: #008080;">20</span> <span style="color: #008000;">且有序区是在原向量的尾部由后往前逐步扩大至整个向量为止。
+</span><span style="color: #008080;">21</span> <span style="color: #008000;">*/</span><span style="color: #000000;">
+</span><span style="color: #008080;">22</span> <span style="color: #000000;">
+</span><span style="color: #008080;">23</span> <span style="color: #008000;">//</span><span style="color: #008000;">生成大根堆</span><span style="color: #008000;">
+</span><span style="color: #008080;">24</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> HeapAdjust(</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> SortData[],</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> StartIndex, </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> Length)
+</span><span style="color: #008080;">25</span> <span style="color: #000000;">{
+</span><span style="color: #008080;">26</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">while</span><span style="color: #000000;">(</span><span style="color: #000000;">2</span><span style="color: #000000;">*</span><span style="color: #000000;">StartIndex</span><span style="color: #000000;">+</span><span style="color: #000000;">1</span><span style="color: #000000;"> </span><span style="color: #000000;">&lt;</span><span style="color: #000000;"> Length)
+</span><span style="color: #008080;">27</span> <span style="color: #000000;"> {
+</span><span style="color: #008080;">28</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> MinChildrenIndex </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #000000;">2</span><span style="color: #000000;">*</span><span style="color: #000000;">StartIndex</span><span style="color: #000000;">+</span><span style="color: #000000;">1</span><span style="color: #000000;"> ;
+</span><span style="color: #008080;">29</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">if</span><span style="color: #000000;">(</span><span style="color: #000000;">2</span><span style="color: #000000;">*</span><span style="color: #000000;">StartIndex</span><span style="color: #000000;">+</span><span style="color: #000000;">2</span><span style="color: #000000;"> </span><span style="color: #000000;">&lt;</span><span style="color: #000000;"> Length )
+</span><span style="color: #008080;">30</span> <span style="color: #000000;"> {
+</span><span style="color: #008080;">31</span> <span style="color: #000000;"> </span><span style="color: #008000;">//</span><span style="color: #008000;">比较左子树和右子树，记录最大值的Index</span><span style="color: #008000;">
+</span><span style="color: #008080;">32</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">if</span><span style="color: #000000;">(SortData[</span><span style="color: #000000;">2</span><span style="color: #000000;">*</span><span style="color: #000000;">StartIndex</span><span style="color: #000000;">+</span><span style="color: #000000;">1</span><span style="color: #000000;">]</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">SortData[</span><span style="color: #000000;">2</span><span style="color: #000000;">*</span><span style="color: #000000;">StartIndex</span><span style="color: #000000;">+</span><span style="color: #000000;">2</span><span style="color: #000000;">])
+</span><span style="color: #008080;">33</span> <span style="color: #000000;"> {
+</span><span style="color: #008080;">34</span> <span style="color: #000000;"> MinChildrenIndex </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #000000;">2</span><span style="color: #000000;">*</span><span style="color: #000000;">StartIndex</span><span style="color: #000000;">+</span><span style="color: #000000;">2</span><span style="color: #000000;">;
+</span><span style="color: #008080;">35</span> <span style="color: #000000;"> }
+</span><span style="color: #008080;">36</span> <span style="color: #000000;"> }
+</span><span style="color: #008080;">37</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">if</span><span style="color: #000000;">(SortData[StartIndex] </span><span style="color: #000000;">&lt;</span><span style="color: #000000;"> SortData[MinChildrenIndex])
+</span><span style="color: #008080;">38</span> <span style="color: #000000;"> {
+</span><span style="color: #008080;">39</span> <span style="color: #000000;"> </span><span style="color: #008000;">//</span><span style="color: #008000;">交换i与MinChildrenIndex的数据</span><span style="color: #008000;">
+</span><span style="color: #008080;">40</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> tmpData </span><span style="color: #000000;">=</span><span style="color: #000000;">SortData[StartIndex];
+</span><span style="color: #008080;">41</span> <span style="color: #000000;"> SortData[StartIndex] </span><span style="color: #000000;">=</span><span style="color: #000000;">SortData[MinChildrenIndex];
+</span><span style="color: #008080;">42</span> <span style="color: #000000;"> SortData[MinChildrenIndex] </span><span style="color: #000000;">=</span><span style="color: #000000;">tmpData;
+</span><span style="color: #008080;">43</span> <span style="color: #000000;"> </span><span style="color: #008000;">//</span><span style="color: #008000;">堆被破坏，需要重新调整</span><span style="color: #008000;">
+</span><span style="color: #008080;">44</span> <span style="color: #000000;"> StartIndex </span><span style="color: #000000;">=</span><span style="color: #000000;"> MinChildrenIndex ;
+</span><span style="color: #008080;">45</span> <span style="color: #000000;"> }
+</span><span style="color: #008080;">46</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">else</span><span style="color: #000000;">
+</span><span style="color: #008080;">47</span> <span style="color: #000000;"> {
+</span><span style="color: #008080;">48</span> <span style="color: #000000;"> </span><span style="color: #008000;">//</span><span style="color: #008000;">比较左右孩子均大则堆未破坏，不再需要调整</span><span style="color: #008000;">
+</span><span style="color: #008080;">49</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">break</span><span style="color: #000000;">;
+</span><span style="color: #008080;">50</span> <span style="color: #000000;"> }
+</span><span style="color: #008080;">51</span> <span style="color: #000000;"> }
+</span><span style="color: #008080;">52</span> <span style="color: #000000;">
+</span><span style="color: #008080;">53</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">return</span><span style="color: #000000;">;
+</span><span style="color: #008080;">54</span> <span style="color: #000000;">}
+</span><span style="color: #008080;">55</span> <span style="color: #000000;">
+</span><span style="color: #008080;">56</span> <span style="color: #008000;">//</span><span style="color: #008000;">堆排序</span><span style="color: #008000;">
+</span><span style="color: #008080;">57</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> HeapSortData(</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> SortData[], </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> Length)
+</span><span style="color: #008080;">58</span> <span style="color: #000000;">{
+</span><span style="color: #008080;">59</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> i</span><span style="color: #000000;">=</span><span style="color: #000000;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">60</span> <span style="color: #000000;">
+</span><span style="color: #008080;">61</span> <span style="color: #000000;"> </span><span style="color: #008000;">//</span><span style="color: #008000;">将Hr[0,Lenght-1]建成大根堆</span><span style="color: #008000;">
+</span><span style="color: #008080;">62</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (i</span><span style="color: #000000;">=</span><span style="color: #000000;">Length</span><span style="color: #000000;">/</span><span style="color: #000000;">2</span><span style="color: #000000;">-</span><span style="color: #000000;">1</span><span style="color: #000000;">; i</span><span style="color: #000000;">&gt;=</span><span style="color: #000000;">0</span><span style="color: #000000;">; i</span><span style="color: #000000;">--</span><span style="color: #000000;">)
+</span><span style="color: #008080;">63</span> <span style="color: #000000;"> {
+</span><span style="color: #008080;">64</span> <span style="color: #000000;"> HeapAdjust(SortData, i, Length);
+</span><span style="color: #008080;">65</span> <span style="color: #000000;"> }
+</span><span style="color: #008080;">66</span> <span style="color: #000000;">
+</span><span style="color: #008080;">67</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (i</span><span style="color: #000000;">=</span><span style="color: #000000;">Length</span><span style="color: #000000;">-</span><span style="color: #000000;">1</span><span style="color: #000000;">; i</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">0</span><span style="color: #000000;">; i</span><span style="color: #000000;">--</span><span style="color: #000000;">)
+</span><span style="color: #008080;">68</span> <span style="color: #000000;"> {
+</span><span style="color: #008080;">69</span> <span style="color: #000000;"> </span><span style="color: #008000;">//</span><span style="color: #008000;">与最后一个记录交换</span><span style="color: #008000;">
+</span><span style="color: #008080;">70</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> tmpData </span><span style="color: #000000;">=</span><span style="color: #000000;">SortData[</span><span style="color: #000000;">0</span><span style="color: #000000;">];
+</span><span style="color: #008080;">71</span> <span style="color: #000000;"> SortData[</span><span style="color: #000000;">0</span><span style="color: #000000;">] </span><span style="color: #000000;">=</span><span style="color: #000000;">SortData[i];
+</span><span style="color: #008080;">72</span> <span style="color: #000000;"> SortData[i] </span><span style="color: #000000;">=</span><span style="color: #000000;">tmpData;
+</span><span style="color: #008080;">73</span> <span style="color: #000000;"> </span><span style="color: #008000;">//</span><span style="color: #008000;">将H.r[0..i]重新调整为大根堆</span><span style="color: #008000;">
+</span><span style="color: #008080;">74</span> <span style="color: #000000;"> HeapAdjust(SortData, </span><span style="color: #000000;">0</span><span style="color: #000000;">, i);
+</span><span style="color: #008080;">75</span> <span style="color: #000000;"> }
+</span><span style="color: #008080;">76</span> <span style="color: #000000;">
+</span><span style="color: #008080;">77</span> <span style="color: #000000;"> </span><span style="color: #0000ff;">return</span><span style="color: #000000;">;
+</span><span style="color: #008080;">78</span> <span style="color: #000000;">}</span></div>
+
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; font-size: 13px; width: 98%; background-color: #eeeeee;">转自：<a href="http://www.cppblog.com/bujiwu/archive/2008/10/26/65146.html" target="_blank">http://www.cppblog.com/bujiwu/archive/2008/10/26/65146.html</a></div>
+
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2009-03-06">2009-03-06</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2009/03/heap-sort/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2009/03/set-up-vim-in-cygwin/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2009/03/yyplayer/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

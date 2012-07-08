@@ -1,0 +1,14 @@
+---
+layout: post
+title: 利用FindBugs提高代码质量
+wordpress_id: 498
+wordpress_url: http://www.hijava.org/?p=498
+date: 2009-10-28 21:01:13.000000000 +08:00
+---
+今天从JavaEye论坛上看到了一篇帖子：<a href="http://www.javaeye.com/topic/504102" target="_blank">用findbugs发现了很多令人毛骨悚然的bug</a> ，随后自己在Eclipse中装了个FindBugs插件试了一下，果然很强大，发现了代码中很多缺陷。利用好这个静态分析工具，对于提高代码质量会有很大的帮助。
+
+FindBugs: <a href="http://findbugs.sourceforge.net" target="_blank">http://findbugs.sourceforge.net</a>
+
+FindBugs Bug Descriptions: <a href="http://findbugs.sourceforge.net/bugDescriptions.html" target="_blank">http://findbugs.sourceforge.net/bugDescriptions.html</a>
+
+FindBugs，第 1 部分: 提高代码质量: <a href="http://www.ibm.com/developerworks/cn/java/j-findbug1/" target="_blank">http://www.ibm.com/developerworks/cn/java/j-findbug1/</a>

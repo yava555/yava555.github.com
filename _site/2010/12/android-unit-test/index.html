@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>Android单元测试初探 | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>Android单元测试初探</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p>Android提供了一组强大的测试工具，它针对Android的具体特征对Junit进行了扩展。下面就具体说一下，如何在Android开发环境中引入单元测试。</p>
+
+<h3>1、修改AndroidManifest.xml</h3>
+
+
+<p>添加<instrumentation> 和 <uses-library android:name="android.test.runner" > 元素，如下所示：</p>
+
+<pre><code>&lt;application android:icon="@drawable/icon" android:label="@string/app_name"&gt;
+    &lt;uses-library android:name="android.test.runner" /&gt;
+&lt;/application&gt;
+&lt;instrumentation android:targetPackage="com.xianguo" android:name="android.test.InstrumentationTestRunner" /&gt;
+</code></pre>
+
+<p><strong>android:targetPackage</strong>指明要运行的测试用例的包名。</p>
+
+<h3>2、继承AndroidTestCase，编写测试用例。</h3>
+
+
+<p>其实AndroidTestCase是继承自junit.framework.TestCase，因此就可以用JUnit的语法和规则来编写测试用例了。</p>
+
+<p>编写完成之后，鼠标右键，[Run As]----[Android Junit Test] 单个运行测试用例。</p>
+
+<h3>3、使用TestSuite统一运行</h3>
+
+
+<p>编写AllTests.java：</p>
+
+<pre><code>import junit.framework.Test;
+import junit.framework.TestSuite;
+import android.test.suitebuilder.TestSuiteBuilder;
+public class AllTests extends TestSuite {
+    public static Test suite() {
+        return new TestSuiteBuilder(AllTests.class).includeAllPackagesUnderHere().build();
+    }
+}
+</code></pre>
+
+<p>执行此类，就会统一自动执行同一个包下的所有测试用例了。</p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2010-12-02">2010-12-02</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2010/12/android-unit-test/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2010/11/get-context-object-in-any-place/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2010/12/how-to-get-android-source-code/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

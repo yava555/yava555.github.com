@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>[转]java知识片段 | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>[转]java知识片段</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p>在面试中，经常要评估面试者的java基础知识和其他知识的掌握情况，包括public/private/protected/默认修饰符、static/final修饰符、集合、字符串操作、对象比较、异常、设计模式和面试者经常使用的框架等，整理一下自己经常使用的评估方法，:)，抛砖中，希望能看到一些好的建议，让大家更好的学习java知识，同时也更好的判断人才，挖出真正的“金子”。
+在面试中我更喜欢用一些实际的题目来看面试者对于知识的真正掌握情况，而不是直接问理论，理论的话很多时候都是背出来的，只有在真正的实战中能结合这些理论，那么才是真正的掌握了。
+1、public/private/protected/默认修饰符
+   有如下一段程序：
+   package a.b.c;
+   public class Test{
+       String name="BlueDavy";
+       protected String desc="blog.bluedavy.cn";
+   }
+   package a.b.c;
+   public class TestA{
+       private String name;
+       private String desc;
+       public TestA(){
+           Test test=new Test();
+           name=test.name;
+           desc=test.desc;
+       }
+   }
+   package a.b.c.d;
+   public class TestB{
+        private String name;
+        private String desc;
+        public TestB(){
+           Test test=new Test();
+           name=test.name;
+           desc=test.desc;
+        }
+   }
+   package a.b.c.d;
+   import a.b.c.Test;
+   public class TestC extends Test{
+        private String cname;
+        private String cdesc;
+        public TestC(){
+           cname=name;
+           cdesc=desc;
+        }
+   }
+   请问以上TestA、TestB、TestC能编译过吗，如编译不过，原因是什么？
+2、static/final修饰符
+   有如下一段程序：
+   package a.b.c;
+   public class Test{
+       private static int i=0;
+       public int getNext(){
+          return i++;
+       }
+   }
+   package a.b.c;
+   public class TestB{
+       public static void main(String[] args){
+           Test test=new Test();
+           System.out.println(test.getNext());
+           Test testObject=new Test();
+           System.out.println(testObject.getNext());
+           System.out.println(test.getNext());
+       }
+   }
+   请问最后打印出来的是什么，为什么？（这里其实还潜在的考察了i++和++i的不同）   
+3、集合
+   有这样一段程序：
+   package a.b.c;
+   public class Test{
+       public static void main(String[] args){
+           List list=new ArrayList();
+           list.add("a");
+           list.add("b");
+           list.add("a");
+           Set set=new HashSet();
+           set.add("a");
+           set.add("b");
+           set.add("a");
+           System.out.println(list.size());
+           System.out.println(set.size());
+       } 
+   }
+   请问运行上面的程序后会打印出的是什么，为什么？
+4、字符串操作
+   有这么一段程序：
+           String a=new String("a");
+           String b="b";
+           String c=a+b;
+           StringBuffer strBuf=new StringBuffer();
+           strBuf.append("a");
+           strBuf.append("b");
+           String d=strBuf.toString();
+           StringBuilder strBuilder=new StringBuilder();
+           strBuilder.append("a");
+           strBuilder.append("b");
+           String e=strBuilder.toString();
+   请问以上程序片段中c、d、e的字符串的创建各有什么不同？
+5、对象比较
+   有这么一段程序：
+   package a.b.c;
+   public class Test{
+       public String name="BlueDavy";
+   }
+   package a.b.c;
+   public class TestA{
+       public static void main(String[] args){
+           Test test=new Test();
+           Test testB=new Test();
+           System.out.println(test.equals(testB));
+           System.out.println(test.name.equals(testB.name));
+       }
+   }
+   请问以上程序执行的结果是，为什么？
+   潜在问题，如要test.equals(testB)为true，需要怎么做？
+6、异常
+   有这样一段程序：
+   package a.b.c;
+   public class TestException extends Exception{ 
+       public TestException(String message){
+           super(message);
+       }
+   };
+   package a.b.c;
+   public class Test{
+       public void call(int state) throws IllegalStateException{
+           if(state==0)
+              throws new IllegalStateException("state is 0");
+       }
+       public void invoke(int state) throws TestException{
+           if(state==0)
+              throws new TestException("state is 0");
+       }
+   }
+   package a.b.c;
+   public class TestA{
+       public static void main(String[] args){
+            Test test=new Test();
+            test.call(0);
+            test.invoke(0);
+       }
+   }
+   请问以上的TestA有问题吗，如没问题执行的结果是？
+以上的这些题目更多的是从基础层面去考虑，而且也只是考察了相应知识点的片面的部分，当面试者能正确的过掉这个基础关后，完全可以更加深入的交流这些基础知识，例如可以拿实际程序的题目来继续问集合中HashMap和Hashtable的不同（甚至还可以引入并发场景）、JVM是如何存储HashMap的key和value的、当存储的内容超过了HashMap的容量时，jvm会怎么做等问题。
+除了这些基础知识外，还可以进一步评估对于java io、java thread、java concurrent、java net、java NIO等package的掌握程度。
+更进一步，可以继续评估面试者对于JMX、JNDI、JTA、RMI、Java classloader、反射、动态代理、GC、JVM内存分配等更为深入的领域的掌握程度，当然，问的问题需要根据所需招的岗位的知识体系来定。
+而设计模式也是在面试时经常会考察的一点：
+例如单态模式，可以请面试者直接手写一段单态模式的代码，然后针对代码可以问些不同的问题，例如有用同步方式写的，可以问如何减少getInstance的锁竞争等问题。
+进而可以评估面试者对于更复杂的组合模式以及相关实现技术的掌握程度，例如MVC模式，可以请面试者说出假设不用任何开源的MVC框架，而是自己写，那么这个时候提交的request的整个处理流程是怎么样的，如果面试者答的不错的话，可以继续问这其中涉及的例如配置文件解析、反射等等问题，另外还可以评估下面试者自己的想法，同样还有像事件机制如何实现、提供出3个spring bean xml，在没有spring的情况下怎么将xml中定义的bean初始化并且将所有的依赖注入等等问题。
+在和面试者交流了这些后，可以交流下面试者在其熟悉的框架上的掌握程度。
+还有一点最需要评估的是面试者对于技术的兴趣程度，在面试过程中要注意察言观色，再结合一些技术兴趣方面的问题，基本就可以判断出来了，例如对于技术感兴趣的很多会研究一些冷门的技术、对于所感兴趣的技术会有比较多的了解、或用技术做一些好玩的东西等等。
+以上所有的问题更多的是面试官根据企业的需求来进行主动的提问，在最后应该问问面试者是否有未问到的，但面试者自己认为比较熟悉的领域，如果有的话，也应进行交流，以能够更加准确的评估面试者，但毕竟面试的时间通常不会太长，问的问题必然会出现片面性，这个时候面试就存在了一定的运气成分，因此要很准确的评估是很难做到的，多数的面试方法都是通过多轮面试的方法，以尽量更加准确的进行评估，:)。</p>
+
+<p>转自：<a href="http://www.blogjava.net/BlueDavy/archive/2008/10/16/234764.html">http://www.blogjava.net/BlueDavy/archive/2008/10/16/234764.html</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2008-10-17">2008-10-17</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2008/10/interview-1/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2008/10/java-excel/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2008/11/ubuntu-jdk-install/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

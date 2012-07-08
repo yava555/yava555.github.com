@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>如何在Linux上安装Squid代理服务器软件 | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>如何在Linux上安装Squid代理服务器软件</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<h3>1、获取Squid源代码</h3>
+
+
+<pre><code>wget ftp://ftp.cuhk.edu.hk/pub/packages/info-systems/www/squid/squid-3.1.1.tar.gz
+</code></pre>
+
+<h3>2、编译及安装</h3>
+
+
+<pre><code>tar -zxvf squid-3.1.1.tar.gz
+cd squid-3.1.1
+./configure --prefix=/usr/local/squid --enable-arp-acl --enable-linux-netfilter --enable-pthreads --enable-err-language="Simplify_Chinese" --enable-default-err-language="Simplify_Chinese" --enable-auth="basic" --enable-baisc-auth-helpers="NCSA" --enable-underscore
+make
+make install
+</code></pre>
+
+<h3>3、编译生成Squid认证程序ncsa_auth</h3>
+
+
+<pre><code>cd helpers/basic_auth/NCSA/
+make
+cp ncsa_auth /usr/sbin/
+cd ../../../
+</code></pre>
+
+<h3>4、使用htpasswd来生成用户名/密码对应的文件</h3>
+
+
+<pre><code>htpasswd -c /usr/local/squid/password hijava
+</code></pre>
+
+<p>在输入两边密码后，一个hijava用户就生成了。如果以后需要添加用户，把上面的命令去掉-c参数再运行即可。</p>
+
+<h3>5、修改Squid配置文件</h3>
+
+
+<pre><code>cd /usr/local/squid/
+mv -f etc/squid.conf etc/squid.conf.bak
+vi etc/squid.conf
+</code></pre>
+
+<p>插入如下内容：</p>
+
+<pre><code>acl SSL_ports port 443
+acl Safe_ports port 80      # http
+acl Safe_ports port 21      # ftp
+acl Safe_ports port 443     # https
+acl Safe_ports port 70      # gopher
+acl Safe_ports port 210     # wais
+acl Safe_ports port 1025-65535  # unregistered ports
+acl Safe_ports port 280     # http-mgmt
+acl Safe_ports port 488     # gss-http
+acl Safe_ports port 591     # filemaker
+acl Safe_ports port 777     # multiling http
+acl CONNECT method CONNECT
+
+auth_param basic program /usr/sbin/ncsa_auth /usr/local/squid/password
+acl normal proxy_auth REQUIRED
+http_access allow normal
+
+# Deny requests to certain unsafe ports
+http_access deny !Safe_ports
+
+# Deny CONNECT to other than secure SSL ports
+http_access deny CONNECT !SSL_ports
+
+# And finally deny all other access to this proxy
+http_access deny all
+
+# Squid normally listens to port 3128
+http_port 3128
+
+# We recommend you to use at least the following line.
+hierarchy_stoplist cgi-bin ?
+
+# Uncomment and adjust the following to add a disk cache directory.
+#cache_dir null /tmp
+
+# Leave coredumps in the first cache dir
+coredump_dir /usr/local/squid/var/cache
+
+# Add any of your own refresh_pattern entries above these.
+refresh_pattern ^ftp:       1440    20% 10080
+refresh_pattern ^gopher:    1440    0%  1440
+refresh_pattern -i (/cgi-bin/|\?) 0 0%  0
+refresh_pattern .       0   20% 4320
+</code></pre>
+
+<h3>6、启动Squid</h3>
+
+
+<pre><code> ./sbin/squid
+</code></pre>
+
+<p>参考：<a href="http://wiki.ubuntu.org.cn/Squid%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3" target="_blank">http://wiki.ubuntu.org.cn/Squid%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2010-04-04">2010-04-04</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2010/04/how-toinstall-squid-on-linux/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2010/04/move-to-vps/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2010/04/use-nginx-as-http-proxy-server/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

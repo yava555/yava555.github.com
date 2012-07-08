@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>Jad Java反编译工具 | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>Jad Java反编译工具</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p>Jad是一个简单易用的反编译工具，可以将二进制字节码文件转换成源文件。今天用jad反编译了下写过的一个class文件，结果让我大吃一惊，反编译出来的代码和源文件差别很小。</p>
+
+<p>一、基本用法
+Usage:<span class="hilite1">jad</span> [option(s)]
+直接输入类文件名，且支持通配符，如下所示。
+c:\Java&amp;gt;<span class="hilite1">jad</span> example1.class
+c:\Java&amp;gt;<span class="hilite1">jad</span> *.class
+结果是将example1.class反编译为example1.<span class="hilite1">jad</span>。将example1.<span class="hilite1">jad</span>改为example1.Java即得源文件。</p>
+
+<p>二、Option -o
+不提示，覆盖源文件</p>
+
+<p>三、Option -s
+c:\Java&amp;gt;<span class="hilite1">jad</span> -sJava example1.class
+反编译结果以.Java为扩展名。</p>
+
+<p>四、Option -p
+将反编译结果输出到屏幕
+c:\Java&amp;gt;<span class="hilite1">jad</span> -p example1.class
+将反编译结果重定向到文件
+c:\Java&amp;gt;<span class="hilite1">jad</span> -p example1.class&gt;example1.Java</p>
+
+<p>五、Option -d
+指定反编译的输出文件目录
+c:\Java&amp;gt;<span class="hilite1">jad</span> -o -dtest -sJava *.class</p>
+
+<p>官方网站：<a href="http://kpdus.com/jad.html">http://kpdus.com/jad.html</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2008-09-01">2008-09-01</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2008/09/jad-introduce/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2008/09/proguard-introduce/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2008/09/eclipse-swt-configure/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

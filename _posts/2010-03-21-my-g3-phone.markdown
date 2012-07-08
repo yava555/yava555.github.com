@@ -1,0 +1,28 @@
+---
+layout: post
+title: 我的G3手机
+wordpress_id: 624
+wordpress_url: http://www.hijava.org/?p=624
+date: 2010-03-21 22:29:24.000000000 +08:00
+---
+<a href="/uploads/2010/03/home.jpg"><img class="alignnone size-medium wp-image-630" title="home" src="/uploads/2010/03/home-200x300.jpg" alt="" width="200" height="300" /></a>
+
+折腾HTC G3大约有2个月了，今天将G3升级到了Android 2.1，由于HTC官方还没有推出2.0版ROM，使用的是<a href="http://www.hiapk.com/bbs/thread-148682-1-1.html" target="_blank">安逸版的ROM</a> 。另外借此机会重新整理了下手机中的软件，分享几个有趣的应用。
+<h3>1、Google Map &amp; Google Latitude</h3>
+Google Map就不用多说了，很多人都知道。<a href="http://www.google.com/latitude" target="_blank">Google Latitude</a>主要是用来和好友共享地理位置信息的，这里有篇文章专门介绍Latitude：<a href="http://betashow.blogbus.com/logs/39020026.html" target="_blank">通过谷歌纵横（Google Latitude）与好友分享位置信息</a>。这次刷机很大程度上是为了体验一下Latitude.
+
+<a href="/uploads/2010/03/latitude.jpg"><img class="alignnone size-medium wp-image-631" title="latitude" src="/uploads/2010/03/latitude-200x300.jpg" alt="" width="200" height="300" /></a>
+<h3>2、大众点评</h3>
+大众点评网推出的Android应用，可以通过GPS定位，查询附近的小吃、购物场所和娱乐场所等，最主要的是可以查看用户的点评信息。
+
+<a href="/uploads/2010/03/dazhong.jpg"><img class="alignnone size-medium wp-image-628" title="dazhong" src="/uploads/2010/03/dazhong-200x300.jpg" alt="" width="200" height="300" /></a>
+<h3>3、Gesture Search</h3>
+Google推出的手势搜索软件，让你可以直接在屏幕上手写出字母，来对联系人列表、音乐、书签、应用程序的相关字母进行搜索。
+
+<a href="/uploads/2010/03/Gesture.jpg"><img class="alignnone size-medium wp-image-629" title="Gesture" src="/uploads/2010/03/Gesture-200x300.jpg" alt="" width="200" height="300" /></a>
+<h3>4、Barcode Scanner</h3>
+条形码扫描器，可以对商品包装上的条形码（一维码和二维码）进行扫描，查询出商品的基本信息。更详细介绍参加奥谷的文章：<a href="http://android.google.org.cn/posts/daily-apps-barcode-scanner.html" target="_blank">Android条形码扫描器 Barcode Scanner</a>
+
+<a href="/uploads/2010/03/barcode.jpg"><img class="alignnone size-medium wp-image-627" title="barcode" src="/uploads/2010/03/barcode-200x300.jpg" alt="" width="200" height="300" /></a>
+<h3>5、Shazam</h3>
+音乐雷达，一款非常酷的音乐识别软件，几秒钟就可以告诉你歌曲的基本信息。

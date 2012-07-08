@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="yava" />
+    <title>利用139手机邮箱建立股票短信查询系统 | yava</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="yava" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>利用139手机邮箱建立股票短信查询系统</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <span><a title="links" class="" href="http://s.hijava.org/">links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<p>最近突然对股票很感兴趣，在学习的过程中就萌生了一个想法：“如果有一个股票短信查询系统该多好啊，发送股票代码到指定的号码，然后就能立马收到该股票实时信息”。经过一些技术调研之后，发现借助移动的139手机邮箱就可以实现该功能，一切都是免费的！</p>
+
+<h3>一、原理：</h3>
+
+
+<ol>
+    <li>移动139邮箱提供了“用短信发邮件的功能”，使用方式：发送短信 “邮件地址[空格或#]邮件主题[空格或#]邮件正文” 到10658139。
+利用此功能，我们就可以用短信，将想要查询的股票代码发送到指定的邮箱 “getstock@126.com ”中。</li>
+    <li>写程序，不断读取邮箱 “getstock@126.com ”中的邮件，得到股票代码和发件人邮箱地址。</li>
+    <li>根据股票代码，利用<a href="http://www.morningstaredu.com/public_html/wordpress/%E6%96%B0%E6%B5%AA%E8%82%A1%E7%A5%A8%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A31.html" target="_blank">新浪股票查询接口</a>，获取实时股票数据。</li>
+    <li>将股票数据，发送到第2步获得的发件人的邮箱中（移动会把139邮箱的邮件，自动以短信形式发送到用户手机上）。</li>
+</ol>
+
+
+<h3>二、使用方式：</h3>
+
+
+<ol>
+    <li>开通139邮箱，并且在邮箱的设置中开启“邮件到达通知”功能，手机接收方式最好选择长短信。</li>
+    <li>发送短信 <strong>“getstock@126.com 600050” 到 10658139</strong> (后台服务已开启，欢迎大家测试)
+注：600050是股票代码</li>
+</ol>
+
+
+<h3>三、延伸：</h3>
+
+
+<p>其实，利用此原理还可以做好多有趣的事情，例如发短信获取百科数据、发短信远程操作电脑... 主要看大家的想象力了。</p>
+
+<h3>四、源码下载：</h3>
+
+
+<p><a href="/uploads/2010/11/StockSMS.zip">StockSMS.zip</a> 代码未整理，将就查看 :)</p>
+
+<h3>五、相关链接</h3>
+
+
+<ol>
+    <li> <a href="http://chinamobileshare.5d6d.com/thread-972-1-1.html" target="_blank">139手机邮箱短信操作指令汇总</a></li>
+    <li> <a href="http://www.morningstaredu.com/public_html/wordpress/%E6%96%B0%E6%B5%AA%E8%82%A1%E7%A5%A8%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A31.html" target="_blank">新浪股票查询接口</a></li>
+</ol>
+
+
+<p>原文地址：<a href="http://www.hijava.org/code/build-stock-sms-query-system-use-139-mail" target="_blank">http://www.hijava.org/code/build-stock-sms-query-system-use-139-mail</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://yihui.name">yava</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2010-11-12">2010-11-12</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+</span>
+
+</section>
+<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yava'; // required: replace example with your forum shortname
+    var disqus_url = 'http://www.hijava.org/2010/11/build-stock-sms-query-system-use-139-mail/';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://www.hijava.org/2010/11/10-coolest-linux-command/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://www.hijava.org/2010/11/old-boy/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
