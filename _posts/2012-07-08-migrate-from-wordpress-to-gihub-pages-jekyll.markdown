@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 把博客从WordPress迁移到Jekyll
+title: 拥抱Jekyll
 date: 2012-07-08 21:54:23.000000000 +08:00
 categories:
 - 技术
