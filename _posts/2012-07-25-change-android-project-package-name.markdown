@@ -6,7 +6,7 @@ categories:
 - 技术
 tags:
 - android
-- eclipse
+- shell
 
 ---
 
