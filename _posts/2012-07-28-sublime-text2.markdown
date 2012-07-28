@@ -41,7 +41,7 @@ tags:
 		{ "keys": ["super+shift+k"], "command": "find_under_prev" }
 
 	]
-command+k往下查找选取关键词，command+shift+k往上查找
+command+k往下查找选取关键词，command+shift+k往上查找  
 command+j跳转到定义位置，command+shift+j返回（覆盖了Ctrl+Alt+] 和 Ctrl+Alt+[）
 
 
