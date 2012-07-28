@@ -9,7 +9,7 @@ tags:
 
 ---
 
-使用了一上午Sublime Text2，发现果然是一神器，完全超乎了我的想象。以前还为转到到Mac OS X后没有Source Insight而担忧，现在看来完全是想多了。
+使用了一上午Sublime Text2，发现果然是一神器，完全超乎了我的想象。以前还担心转到Mac OS X后找不到Source Insight的替代品，现在看来完全是多虑了。
 
 关于Sublime Text的介绍，@lucifr写了一系列详尽的文章，见这里：[http://lucifr.com/tags/sublime-text/](http://lucifr.com/tags/sublime-text/)。在这里我只是记录一下我的配置过程：
 
