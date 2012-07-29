@@ -7,8 +7,132 @@
     <title>yava</title>
     <link href="http://www.hijava.org/feed/" rel="self" />
     <link href="http://yihui.name/" />
-    <lastBuildDate>2012-07-08T13:29:14+08:00</lastBuildDate>
+    <lastBuildDate>2012-07-29T23:59:07+08:00</lastBuildDate>
     <webMaster>xie@yihui.name</webMaster>
+    
+    <item>
+      <title>Sublime Text2</title>
+      <link href="http://www.hijava.org/2012/07/sublime-text2/"/>
+      <pubDate>2012-07-28T14:17:22+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2012/07/sublime-text2</guid>
+      <content:encoded><![CDATA[<p>使用了一上午Sublime Text2，发现果然是一神器，完全超乎了我的想象。以前还担心转到Mac OS X后找不到Source Insight的替代品，现在看来完全是多虑了。</p>
+
+<p>关于Sublime Text的介绍，@lucifr写了一系列详尽的文章，见这里：<a href="http://lucifr.com/tags/sublime-text/">http://lucifr.com/tags/sublime-text/</a>。在这里我只是记录一下我的配置过程：</p>
+
+<h3>安装<a href="http://wbond.net/sublime_packages/package_control">Sublime Package Control</a></h3>
+
+<p><em>ctrl+` 调出控制台，然后在控制台中执行如下命令：</em></p>
+
+<pre><code>import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'
+</code></pre>
+
+<h3>安装<a href="https://github.com/SublimeText/CTags">Ctags</a>，用于变量方法定义跳转</h3>
+
+<ul>
+<li>快捷键“Ctrl+Shift+P”打开命令面板，选择“Package Control : Install Package”，搜索Ctags进行安装</li>
+<li>用终端在项目路径下执行<em>ctags -R -f .tags</em>，用于生成.tags文件</li>
+<li>重新打开Sublime，将光标停在某个变量或方法名称上，“Ctrl＋Alt＋]”快捷键就能跳到变量或方法定义的位置，“Ctrl＋Alt＋[”返回调用前位置</li>
+</ul>
+
+
+<h3>安装Gist插件，作为代码片段管理器</h3>
+
+<p>快捷键“Ctrl+Shift+P”打开命令面板，选择“Package Control : Install Package”，搜索Gist进行安装
+安装完后在Tools菜单下有一个Gist子菜单，可以将选则的代码片段保存到GitHub Gist上。</p>
+
+<h3>修改快捷键，Settings-User设置内容如下（还在慢慢完善中...）：</h3>
+
+<pre><code>[
+    {"keys": ["super+j"], "command": "navigate_to_definition"},
+    {"keys": ["super+shift+j"], "command": "jump_back"},
+    { "keys": ["super+k"], "command": "find_under" },
+    { "keys": ["super+shift+k"], "command": "find_under_prev" }
+
+]
+</code></pre>
+
+<p>command+k往下查找选取关键词，command+shift+k往上查找<br/>
+command+j跳转到定义位置，command+shift+j返回 &lt; 覆盖了Ctrl+Alt+] 和 Ctrl+Alt+[ ></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>自动更改Android项目包名</title>
+      <link href="http://www.hijava.org/2012/07/change-android-project-package-name/"/>
+      <pubDate>2012-07-25T22:08:22+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2012/07/change-android-project-package-name</guid>
+      <content:encoded><![CDATA[<p><em>写了一段Shell脚本用于更改Android项目包名：</em></p>
+
+<pre><code>#!/bin/bash
+
+old_package_name="com.xianguo.pad"
+new_package_name="com.xianguo.play"
+
+cd ..
+
+find . -name "*.java" | xargs sed -i -e "s/${old_package_name}/${new_package_name}/g"
+find . -name "*.xml" | xargs sed -i -e "s/${old_package_name}/${new_package_name}/g"
+find . -name "*.cfg" | xargs sed -i -e "s/${old_package_name}/${new_package_name}/g"
+find . -name "*.html" | xargs sed -i -e "s/${old_package_name}/${new_package_name}/g"
+
+mv src/${old_package_name//./\/} src/${new_package_name//./\/}
+</code></pre>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Subversion Native Library Not Available</title>
+      <link href="http://www.hijava.org/2012/07/subversion-native-library-not-available/"/>
+      <pubDate>2012-07-22T10:35:22+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2012/07/subversion-native-library-not-available</guid>
+      <content:encoded><![CDATA[<p>在Mac OS X系统下使用eclipse的subclipse插件时报了如下错误：</p>
+
+<p><code>Failed to load JavaHL Library.
+These are the errors that were encountered:
+no libsvnjavahl-1 in java.library.path
+no svnjavahl-1 in java.library.path
+no svnjavahl in java.library.path
+java.library.path = .:/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java</code></p>
+
+<p>解决方式十分简单，安装JavaHL即可：</p>
+
+<pre><code>sudo port install subversion-javahlbindings
+</code></pre>
+
+<p>参照链接：<a href="http://www.khotyn.com/2011/01/09/%E5%9C%A8mac-os-x%E4%B8%8A%E5%AE%89%E8%A3%85javahl/">在Mac OS X上安装JavaHL</a></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>拥抱Jekyll</title>
+      <link href="http://www.hijava.org/2012/07/migrate-from-wordpress-to-gihub-pages-jekyll/"/>
+      <pubDate>2012-07-08T21:54:23+08:00</pubDate>
+      <author>yava</author>
+      <guid>http://www.hijava.org/2012/07/migrate-from-wordpress-to-gihub-pages-jekyll</guid>
+      <content:encoded><![CDATA[<p>周末花了一天时间把Blog从WordPress迁移到了<a href="http://pages.github.com/">GitHub Pages</a>，过去一年Blog一直托管在Godaddy上，不知什么原因，网站一直不稳定，访问速度奇慢，以至于连写文章的欲望都没有了。</p>
+
+<p>幸好有了<a href="http://pages.github.com/">GitHub Pages</a> 和 <a href="https://github.com/mojombo/jekyll/wiki/">Jekyll</a> .</p>
+
+<p><a href="https://github.com/mojombo/jekyll/wiki/">Jekyll</a>是一个简单的静态站点生成引擎，<a href="http://pages.github.com/">GitHub Pages</a> 对其提供了原生支持，你可以用<a href="http://www.textism.com/tools/textile/?sample=2">Textile</a> 或 <a href="http://wowubuntu.com/markdown/">Markdown</a>语法进行写作，提交到Github后会自动转换成Html.</p>
+
+<p>Git+GitHub+Jekyll+Markdown 成了最佳的写作方式，至此你可以<a href="http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html">像黑客一样写博客了</a>。</p>
+
+<p>PS.偷用了<a href="http://yihui.name">Yihui Xie</a>的模板，希望不会介意：）</p>
+
+<p>关于<a href="http://pages.github.com/">GitHub Pages</a> 和 <a href="https://github.com/mojombo/jekyll/wiki/">Jekyll</a>的介绍可以参照下面几篇文章：</p>
+
+<ul>
+<li><a href="http://blog.leezhong.com/tech/2010/08/25/make-github-as-blog-engine.html">使用github作为博客引擎</a></li>
+<li><a href="http://beiyuu.com/github-pages/">使用Github Pages建独立博客</a></li>
+<li><a href="http://www.yangzhiping.com/tech/wordpress-to-jekyll.html">告别wordpress，拥抱jekyll</a></li>
+<li><a href="http://www.yangzhiping.com/tech/writing-space.html">理想的写作环境：git+github+markdown+jekyll</a></li>
+</ul>
+
+]]></content:encoded>
+    </item>
     
     <item>
       <title>如何去掉Android App里的内置广告</title>
@@ -18,22 +142,19 @@
       <guid>http://www.hijava.org/2012/01/how-to-remove-ad-in-apk</guid>
       <content:encoded><![CDATA[<p>1、使用apktool 工具反编译 myapp.apk文件</p>
 
-<blockquote>apktool d myapp.apk myapp/</blockquote>
-
+<blockquote><p><em>apktool d myapp.apk myapp/</em></p></blockquote>
 
 <p>2、修改layout文件，找到广告对应的View，将layout_height 与 layout_width 设置成0dip</p>
 
 <p>3、使用apktool 重新打包修改过的源文件</p>
 
-<blockquote>apktool b myapp</blockquote>
-
+<blockquote><p><em>apktool b myapp</em></p></blockquote>
 
 <p>新生成的myapp.apk 在myapp/dist目录下</p>
 
 <p>4、使用jarsigner对新生成的apk进行签名</p>
 
-<blockquote>jarsigner -verbose -keystore key.keystore -signedjar myapp_signed.apk myapp.apk passwd</blockquote>
-
+<blockquote><p><em>jarsigner -verbose -keystore key.keystore -signedjar myapp_signed.apk myapp.apk passwd</em></p></blockquote>
 
 <p>myapp_signed.apk就是去掉广告后的apk文件</p>
 ]]></content:encoded>
@@ -192,204 +313,6 @@ NARROW_COLUMNS：可能的话，使所有列的宽度不超过屏幕宽度。</p
 <p><a href="/uploads/2011/01/instapaper-qr-code.png"><img class="alignnone size-full wp-image-1073" title="instapaper-qr-code" src="/uploads/2011/01/instapaper-qr-code.png" alt="" width="175" height="175" /></a></p>
 
 <p><a href="market://details?id=org.hijava.instapaper">market://details?id=org.hijava.instapaper</a></p>
-]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>Android自动弹出软键盘</title>
-      <link href="http://www.hijava.org/2010/12/android-auto-pop-up-soft-keyboard/"/>
-      <pubDate>2010-12-25T18:30:03+08:00</pubDate>
-      <author>yava</author>
-      <guid>http://www.hijava.org/2010/12/android-auto-pop-up-soft-keyboard</guid>
-      <content:encoded><![CDATA[<p>在AndroidManifest.xml文件，对应Activity处增加：<em>android:windowSoftInputMode="stateVisible|adjustResize"</em></p>
-
-<p><a href="/uploads/2010/12/softinput.jpg"><img class="alignnone size-full wp-image-1057" title="softinput" src="/uploads/2010/12/softinput.jpg" alt="" width="328" height="486" /></a></p>
-
-<p>stateVisible：打开Activity时自动弹出软键盘
-adjustResize：Acitivity根据屏幕中的软键盘而调整大小，可以让软键盘始终显示在屏幕下方，并且不会将操作按钮覆盖住。</p>
-
-<p>参照：<a href="http://developer.android.com/guide/topics/manifest/activity-element.html#wsoft" target="_blank">http://developer.android.com/guide/topics/manifest/activity-element.html#wsoft</a></p>
-]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>修改TabHost默认样式</title>
-      <link href="http://www.hijava.org/2010/12/modify-tabhost-default-style/"/>
-      <pubDate>2010-12-25T17:46:47+08:00</pubDate>
-      <author>yava</author>
-      <guid>http://www.hijava.org/2010/12/modify-tabhost-default-style</guid>
-      <content:encoded><![CDATA[<p>TabHost是Android提供的一个容器组件，利用它可以轻松地实现TAB界面，如下图所示：</p>
-
-<p><a href="/uploads/2010/12/tabhost.jpg"><img class="alignnone size-full wp-image-1044" title="tabhost" src="/uploads/2010/12/tabhost.jpg" alt="" width="322" height="91" /></a></p>
-
-<p>但很多时候，默认的TAB样式并不符合软件的整体风格，这时候该怎么办呢？其实，我们可以编写XML对其样式进行修改。下面修改后的效果图：</p>
-
-<p><a href="/uploads/2010/12/tabhost_1.jpg"><img class="alignnone size-full wp-image-1045" title="tabhost_1" src="/uploads/2010/12/tabhost_1.jpg" alt="" width="318" height="36" /></a></p>
-
-<h3>1. TabHost布局文件 main.xml</h3>
-
-
-<pre><code>&lt;TabHost
-    android:id="@+id/tabhost"  
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"&gt;  
-    &lt;LinearLayout  
-    android:orientation="vertical"
-    android:layout_width="fill_parent"  
-    android:layout_height="fill_parent"&gt;  
-    &lt;TabWidget  
-        android:id="@android:id/tabs"
-        android:layout_width="fill_parent" 
-        android:layout_height="30dip"
-        android:background="#a0a0a0"
-        android:layout_weight="0" /&gt;  
-    &lt;FrameLayout  
-        android:id="@android:id/tabcontent"  
-        android:layout_width="fill_parent"  
-        android:layout_height="fill_parent"
-        android:layout_weight="1"&gt;
-              &lt;ListView 
-                android:id="@+id/user_list"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" 
-                android:divider="@drawable/divider_line"
-                android:cacheColorHint="#00000000" /&gt;
-              &lt;ListView 
-                android:id="@+id/article_list"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" 
-                android:divider="@drawable/divider_line"
-                android:cacheColorHint="#00000000" /&gt;  
-              &lt;ListView 
-                android:id="@+id/feed_list"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" 
-                android:divider="@drawable/divider_line"
-                android:cacheColorHint="#00000000" /&gt;  
-              &lt;ListView 
-                android:id="@+id/book_list"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" 
-                android:divider="@drawable/divider_line"
-                android:cacheColorHint="#00000000" /&gt;                                                             
-    &lt;/FrameLayout&gt;  
-    &lt;/LinearLayout&gt;  
-&lt;/TabHost&gt;
-</code></pre>
-
-<p>FrameLayout里有四个ListView 分别对应用户、文章、频道、图书。
-TabWidget和FrameLayout的ID不能自己定义修改。</p>
-
-<h3>2. Activity后台代码</h3>
-
-
-<pre><code>RelativeLayout articleTab = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.minitab, null);
-TextView articleTabLabel = (TextView) articleTab.findViewById(R.id.tab_label);
-articleTabLabel.setText("文章");
-
-RelativeLayout feedTab = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.minitab, null);
-TextView feedTabLabel = (TextView) feedTab.findViewById(R.id.tab_label);
-feedTabLabel.setText("频道");
-
-RelativeLayout bookTab = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.minitab, null);
-TextView bookTabLabel = (TextView) bookTab.findViewById(R.id.tab_label);
-bookTabLabel.setText("图书");
-
-TabHost tabHost = (TabHost) findViewById(R.id.tabhost);
-tabHost.setup();
-
-tabHost.addTab(tabHost.newTabSpec("user").setIndicator(userTab).setContent(R.id.user_list));
-tabHost.addTab(tabHost.newTabSpec("article").setIndicator(articleTab).setContent(R.id.article_list));
-tabHost.addTab(tabHost.newTabSpec("feed").setIndicator(feedTab).setContent(R.id.feed_list));
-tabHost.addTab(tabHost.newTabSpec("book").setIndicator(bookTab).setContent(R.id.book_list));
-</code></pre>
-
-<p>TabHost创建出来以后，必须先setup一下，tabHost.setup();
-setIndicator方法设置的View其实就对应了TAB中的一个个选项卡，它们都是通过一个叫minitab的布局文件inflate出来的。</p>
-
-<h3>3. 选项卡布局文件minitab.xml</h3>
-
-
-<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingLeft="5dip"
-    android:paddingRight="5dip"&gt;  
-
-    &lt;TextView android:id="@+id/tab_label"  
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="center"
-    android:textColor="#000000"
-    android:textStyle="bold"
-    android:background="@drawable/minitab" /&gt; 
-&lt;/RelativeLayout&gt;
-</code></pre>
-
-<p>drawable/minitab是一个selector，指定了Tab选项卡的背景颜色。</p>
-
-<h3>4. selector文件 minitab.xml</h3>
-
-
-<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;selector
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    &gt;
-    &lt;item
-        android:state_selected="false"
-        android:drawable="@drawable/minitab_unselected"
-        &gt;
-    &lt;/item&gt;
-    &lt;item
-        android:state_selected="true"
-        android:drawable="@drawable/minitab_default"
-        &gt;
-    &lt;/item&gt;
-&lt;/selector&gt;
-</code></pre>
-
-<p>minitab_unselected是一浅蓝色背景图片
-minitab_default是一白色背景图片</p>
-]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>Android分享功能</title>
-      <link href="http://www.hijava.org/2010/12/android-call-system-share-function/"/>
-      <pubDate>2010-12-18T18:57:15+08:00</pubDate>
-      <author>yava</author>
-      <guid>http://www.hijava.org/2010/12/android-call-system-share-function</guid>
-      <content:encoded><![CDATA[<p>代码如下：</p>
-
-<pre><code>Intent intent=new Intent(Intent.ACTION_SEND);
-intent.setType("text/plain");
-intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
-intent.putExtra(Intent.EXTRA_TEXT,"I would like to share this with you...");
-startActivity(Intent.createChooser(intent, getTitle()));
-</code></pre>
-]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>Android View Hierarchy</title>
-      <link href="http://www.hijava.org/2010/12/android-view-hierarchy/"/>
-      <pubDate>2010-12-06T18:49:29+08:00</pubDate>
-      <author>yava</author>
-      <guid>http://www.hijava.org/2010/12/android-view-hierarchy</guid>
-      <content:encoded><![CDATA[<p><a href="http://developer.android.com/guide/developing/tools/hierarchy-viewer.html" target="_blank">Hierarchy Viewer</a> 是Android SDK里的一个工具，可以帮助你分析应用程序的UI布局。</p>
-
-<p><a href="/uploads/2010/12/hierarchyviewer.jpg"><img class="alignnone size-full wp-image-1031" title="hierarchyviewer" src="/uploads/2010/12/hierarchyviewer.jpg" alt="" width="600" height="443" /></a></p>
-
-<p>使用方式：</p>
-
-<ol>
-    <li>连接移动设备或打开模拟器。</li>
-    <li>运行 hierarchyviewer，具体路径：android-sdk-windows\tools\hierarchyviewer.bat。</li>
-    <li>选择设备，点击[load View Hierarchy]按钮，就可以捕获到当前activity的布局信息。</li>
-    <li>双击树节点可以展示单独的UI部分。</li>
-</ol>
-
 ]]></content:encoded>
     </item>
     

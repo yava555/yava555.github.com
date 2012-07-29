@@ -1,0 +1,318 @@
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #D1FBFF url(images/img02.jpg);
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #686868;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-transform: lowercase;
+	font-weight: normal;
+	color: #83BFFB;
+}
+
+h1 {
+	letter-spacing: -1px;
+	font-size: 32px;
+}
+
+h2 {
+	font-size: 23px;
+}
+
+p, ul, ol {
+	margin: 0 0 2em 0;
+	text-align: justify;
+	line-height: 26px;
+}
+
+a:link {
+	color: #83BFFB;
+}
+
+a:hover, a:active {
+	text-decoration: none;
+	color: #83BFFB;
+}
+
+a:visited {
+	color: #83BFFB;
+}
+
+img {
+	border: none;
+}
+
+img.left {
+	float: left;
+	margin: 7px 15px 0 0;
+}
+
+img.right {
+	float: right;
+	margin: 7px 0 0 15px;
+}
+
+/* Form */
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+legend {
+	display: none;
+}
+
+input, textarea, select {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #333333;
+}
+
+#wrapper {
+	background: url(images/img01.jpg) repeat-x;
+}
+
+/* Header */
+
+#header {
+	width: 900px;
+	height: 50px;
+	margin: 0 auto 40px auto;
+	padding-top: 20px;
+}
+
+#logo {
+	float: left;
+	height: 120px;
+}
+
+#logo h1 {
+	font-size: 38px;
+	color: #3399CC;
+}
+
+#logo h1 sup {
+	vertical-align: text-top;
+	font-size: 24px;
+}
+
+#logo h1 a {
+	color: #FFFFFF;
+}
+
+#logo h2 {
+	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #28737B;
+}
+
+#logo a {
+	text-decoration: none;
+	color: #3399CC;
+}
+
+
+/* Page */
+
+#page {
+	width: 900px;
+	margin: 0 auto;
+	background: #FFFFFF;
+	padding: 40px 40px;
+}
+
+/* Content */
+
+#content {
+	float: left;
+	width: 630px;
+}
+
+/* Post */
+
+.post {
+}
+
+.post .title {
+	margin-bottom: 20px;
+	padding-bottom: 5px;
+	background: url(images/img03.jpg) no-repeat left bottom;
+	border-bottom: 1px dashed #FFFFFF;
+}
+
+.post .entry {
+}
+
+.post .meta {
+	padding: 15px 0 60px 0;
+}
+
+.post .meta p {
+	margin: 0;
+	line-height: normal;
+	color: #FFFFFF;
+}
+
+.post .meta .byline {
+	float: left;
+	color: #0000FF;
+}
+
+.post .meta .links {
+	float: right;
+}
+
+.post .meta .more {
+	width: 185px;
+	height: 35px;
+	padding: 5px 45px 5px 45px;
+	background: url(images/img05.jpg) no-repeat left center;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 11px;
+	color: #FFFFFF;
+}
+
+.post .meta .comments {
+	padding: 5px 45px 5px 45px;
+	background: url(images/img05.jpg) no-repeat left center;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 11px;
+	color: #FFFFFF;
+}
+
+.post .meta b {
+	display: none;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: right;
+	width: 220px;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#sidebar li {
+	margin-bottom: 40px;
+}
+
+#sidebar li ul {
+}
+
+#sidebar li li {
+	margin: 0;
+}
+
+#sidebar h2 {
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	background: url(images/img04.jpg) no-repeat left bottom;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+/* Search */
+
+#search {
+}
+
+#search h2 {
+	margin-bottom: 20px;
+}
+
+#s {
+	width: 150px;
+	margin-right: 5px;
+	padding: 3px;
+	border: 1px solid #F0F0F0;
+}
+
+#x {
+	padding: 3px;
+	background: #ECECEC url(images/img08.gif) repeat-x left bottom;
+	border: none;
+	text-transform: lowercase;
+	font-size: 11px;
+	color: #4F4F4F;
+}
+
+/* Boxes */
+
+.box1 {
+	padding: 20px;
+	background: url(images/img05.gif) no-repeat;
+}
+
+.box2 {
+	color: #BABABA;
+}
+
+.box2 h2 {
+	margin-bottom: 15px;
+	background: url(images/img10.gif) repeat-x left bottom;
+	font-size: 16px;
+	color: #FFFFFF;
+}
+
+.box2 ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.box2 a:link, .box2 a:hover, .box2 a:active, .box2 a:visited  {
+	color: #EDEDED;
+}
+
+/* Footer */
+
+#footer {
+	height: 400px;
+	min-height: 74px;
+	padding: 10px 0 0 0;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+}
+
+html>body #footer {
+	height: auto;
+}
+
+#legal {
+	clear: both;
+	padding-top: 20px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 10px;
+	color: #83BFFB;
+}
+
+#legal a {
+	font-weight: bold;
+	color: #83BFFB;
+}
