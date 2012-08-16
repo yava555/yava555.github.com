@@ -12,4 +12,8 @@ layout: page
     <time datetime="2012-08-15">2012-08-15</time>
     <a href="http://stackoverflow.com/questions/601503/how-do-i-obtain-crash-data-from-my-android-application" title="How do I obtain crash-data from my Android application?"  target="_blank">How do I obtain crash-data from my Android application?</a>
   </li>
+  <li class="listing-item">
+    <time datetime="2012-08-15">2012-08-15</time>
+    <a href="https://code.google.com/p/acra/" title="ACRA (Application Crash Report for Android)"  target="_blank">ACRA (Application Crash Report for Android)</a>
+  </li>
 </ul>
