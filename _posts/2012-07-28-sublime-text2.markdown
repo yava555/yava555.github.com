@@ -24,7 +24,7 @@ tags:
 ### 安装[Ctags](https://github.com/SublimeText/CTags)，用于变量方法定义跳转
 
 - 快捷键“Ctrl+Shift+P”打开命令面板，选择“Package Control : Install Package”，搜索Ctags进行安装
-- 用终端在项目路径下执行*ctags -R -f .tags*，用于生成.tags文件
+- 在sublime项目文件夹右键， 出现Ctag:Rebuild Tags 的菜单，然后点击生成.tags的文件（相当于Console下执行*ctags -R -f .tags*）
 - 重新打开Sublime，将光标停在某个变量或方法名称上，“Ctrl＋Alt＋]”快捷键就能跳到变量或方法定义的位置，“Ctrl＋Alt＋[”返回调用前位置
 
 
