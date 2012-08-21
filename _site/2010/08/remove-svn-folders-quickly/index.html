@@ -18,6 +18,7 @@
         </header>
         <nav>
         <span><a title="home page" class="" href="/">home</a></span>
+        <span><a title="share" class="" href="/share/">share</a></span>
         <span><a title="about" class="" href="/about/">about</a></span>
         <span><a title="categories" class="" href="/categories/">categories</a></span>
         <span><a title="tags" class="" href="/tags/">tags</a></span>
@@ -38,7 +39,7 @@
 @="Delete SVN Folders"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\DeleteSVN\command]
-@="cmd.exe /c \"TITLE Removing SVN Folders in %1 &amp;amp;&amp;amp; COLOR 9A &amp;amp;&amp;amp; FOR /r \"%1\" %%f IN (.svn) DO RD /s /q \"%%f\" \""
+@="cmd.exe /c \"TITLE Removing SVN Folders in %1 &amp;&amp; COLOR 9A &amp;&amp; FOR /r \"%1\" %%f IN (.svn) DO RD /s /q \"%%f\" \""
 </code></pre>
 
 <p>将上述代码保存到一个文本文件中，扩展名改成.reg，然后双击运行，导入到注册表中。成功后，在每一个文件夹上点击右键都会有一个“Delete SVN Folders”的选项，点击之后，就可以删除这个文件下下面所有的.svn文件了。</p>
