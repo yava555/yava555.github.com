@@ -4,6 +4,12 @@ layout: page
 ---
 
 <ul class="listing">
+
+  <li class="listing-item">
+    <time datetime="2012-08-30">2012-08-30</time>
+    <a href="http://www.appbrain.com/stats/libraries/dev" title="most used Android dev tools library" target="_blank">most used Android dev tools library [AppBrain]</a>
+  </li>
+
   <li class="listing-item">
     <time datetime="2012-08-30">2012-08-30</time>
     <a href="http://home.wangjianshuo.com/cn/20120822_chackercc.htm" title="动手好奇反叛的Hacker精神" target="_blank">动手好奇反叛的Hacker精神</a>
