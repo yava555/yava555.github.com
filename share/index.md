@@ -5,6 +5,11 @@ layout: page
 
 <ul class="listing">
   <li class="listing-item">
+    <time datetime="2012-08-30">2012-08-30</time>
+    <a href="http://home.wangjianshuo.com/cn/20120822_chackercc.htm" title="动手好奇反叛的Hacker精神" target="_blank">动手好奇反叛的Hacker精神</a>
+  </li>
+
+  <li class="listing-item">
     <time datetime="2012-08-17">2012-08-17</time>
     <a href="http://www.yangzhiping.com/tech/github.html" title="如何高效利用GitHub" target="_blank">如何高效利用GitHub</a>
   </li>
