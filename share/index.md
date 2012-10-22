@@ -34,4 +34,9 @@ layout: page
     <time datetime="2012-08-15">2012-08-15</time>
     <a href="https://code.google.com/p/acra/" title="ACRA (Application Crash Report for Android)"  target="_blank">ACRA (Application Crash Report for Android)</a>
   </li>
+  
+   <li class="listing-item">
+    <time datetime="2012-10-22">2012-10-22</time>
+    <a href="http://www.openintents.org/en/libraries" title="OpenIntents Android Libraries"  target="_blank">OpenIntents Android Libraries</a>
+  </li>
 </ul>
