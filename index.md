@@ -1,5 +1,5 @@
 ---
-title: Hi Java !
+title: HiJava
 layout: page
 ---
 
