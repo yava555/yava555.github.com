@@ -1,0 +1,20 @@
+---
+layout: post
+title: 微信公众帐号dict123
+date: 2012-07-28 14:17:22.000000000 +08:00
+categories:
+- 技术
+tags:
+- wechat 微信 dict123
+
+---
+
+最近做了一个微信查单词的应用dict123，可以用来翻译和查单词，开发借助了[微信公众平台](http://mp.weixin.qq.com/)和[AppFog](https://www.appfog.com/)云平台。
+
+话说[AppFog](https://www.appfog.com/)真不错，2G免费内存，支持各种主流编程语言，用af命令维护和部署都很方便。
+
+![image](/uploads/2012/11/dict123_screenshot.jpg)
+
+欢迎微信好友“dict123”
+
+![image](/uploads/2012/11/qrcode_for_dict123.jpg)
