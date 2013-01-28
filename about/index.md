@@ -14,7 +14,7 @@ RenRen：[http://www.renren.com/yava](http://www.renren.com/yava)
 Twitter：[http://twitter.com/hijava](http://twitter.com/hijava)  
 
 
-Email：yava555 at gamil.com
+Email：yava555 at gmail.com
 
 
 
